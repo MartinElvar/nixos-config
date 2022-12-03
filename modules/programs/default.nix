@@ -1,0 +1,4 @@
+[
+  ./rofi.nix
+  ./alacritty.nix
+]
