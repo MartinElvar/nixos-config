@@ -3,8 +3,8 @@
 {
   imports =
     [(import ./hardware_configuration.nix)] ++
-    [(import ../../modules/desktop/xmonad/default.nix)] ++
-    [(import ../../modules/desktop/virtuallisation/docker/docker.nix)];
+    [(import ../../modules/desktop/xmonad/default.nix)];# ++
+    # [(import ../../modules/desktop/virtuallisation/docker/docker.nix)];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;

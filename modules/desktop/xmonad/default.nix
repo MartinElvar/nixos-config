@@ -6,6 +6,8 @@
       enable = true;
       layaout = "us";
       xkbVariant = "mac";
+      xkbOptions = "caps:super";
+
       libinput = {
         enable = true;
         touchpad = {
