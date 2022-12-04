@@ -37,5 +37,5 @@
           inherit inputs nixpkgs home-manager nur user location doom-emacs;   # Also inherit home-manager so it does not need to be defined here.
         }
       );
-    }
+    };
 }

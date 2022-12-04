@@ -12,7 +12,7 @@ in
 {
   thinkpad = lib.nixosSystem {
     inherit system;
-    specialArgs = { inherit inputs user location };
+    specialArgs = { inherit inputs user location; };
     modules = [
       ./thinkpad
       ./configuration.nix
@@ -22,7 +22,7 @@ in
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = { inherit user doom-emacs; };
         home-manager.users.${user} = {
-          imports = [(import ./home.nix)] ++ [(import ./thinkpad/home.nix)]
+          imports = [(import ./home.nix)] ++ [(import ./thinkpad/home.nix)];
         };
       }
     ];
