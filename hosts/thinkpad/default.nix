@@ -2,7 +2,7 @@
 
 {
   imports =
-    [(import ./hardware_configuration.nix)] ++
+    [(import ./hardware-configuration.nix)] ++
     [(import ../../modules/desktop/xmonad/default.nix)];# ++
     # [(import ../../modules/desktop/virtuallisation/docker/docker.nix)];
 
