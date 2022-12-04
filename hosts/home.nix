@@ -42,6 +42,7 @@
       rofi
       rofi-power-menu
       udiskie
+      trayer
 
       # Xorg
       xclip
@@ -54,13 +55,19 @@
 
       flameshot
       picom
-      sxhkd
 
       # Desktop
       ffmpeg
       slack
       spotify
 
+      # Haskell
+      stack
+      cabal-install
+      stylish-haskell
+      haskellPackages.hoogle
+      haskellPackages.ghcide
+      haskellPackages.gtk2hs-buildtools
 
       # Dev
       # postgres

@@ -42,10 +42,6 @@
       windowManager= {
         xmonad = {
           enable = true;
-          enableContribAndExtras = true;
-          extraPackages = hpkgs: [
-            hpkgs.xmobar
-          ];
         };
       };
 
@@ -61,6 +57,7 @@
       programs.zsh.enable = true;
 
       environment.systemPackages = with pkgs; [       # Packages installed
+        xmobar
         xclip
         xorg.xev
         xorg.xkill

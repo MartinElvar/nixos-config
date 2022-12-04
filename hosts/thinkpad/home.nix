@@ -7,6 +7,7 @@
 
   home = {
     packages = with pkgs; [
+      # networkmanagerapplet
       blueman
       light
       tlp
