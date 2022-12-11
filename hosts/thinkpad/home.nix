@@ -24,5 +24,5 @@
       lowLevelPercent = 20;
       iconType = null;
     };
-  }
+  };
 }

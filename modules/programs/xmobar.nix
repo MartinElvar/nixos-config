@@ -3,7 +3,7 @@
 {
   programs = {
     xmobar = {
-      enabled = true;
+      enable = true;
       extraConfig = ./xmobar/.xmobarrc.hs;
     };
   };

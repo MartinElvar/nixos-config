@@ -7,15 +7,18 @@
   ];
 
   xsession = {
-    xmonad = {
-      enable = true;
-      config = ./config/xmonad.hs;
-      enableContribAndExtras = true;
-      extraPackages = hpkgs: [
-        hpkgs.xmobar
-        hpkgs.xmonad-contrib
-        hpkgs.xmonad-extras
-      ];
-    };
+    enable = true;
+    windowManager = {
+      xmonad = {
+        enable = true;
+        config = ./config/xmonad.hs;
+        enableContribAndExtras = true;
+        extraPackages = hpkgs: [
+          hpkgs.xmobar
+          hpkgs.xmonad-contrib
+          hpkgs.xmonad-extras
+        ];
+      };
+    }
   };
 }

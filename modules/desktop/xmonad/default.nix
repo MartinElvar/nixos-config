@@ -4,7 +4,7 @@
   services = {
     xserver = {
       enable = true;
-      layaout = "us";
+      layout = "us";
       xkbVariant = "mac";
       xkbOptions = "caps:super";
 
