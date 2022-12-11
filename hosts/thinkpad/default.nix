@@ -18,20 +18,20 @@
       efi.canTouchEfiVariables = true;
       timeout = 1;                              # Grub auto select time
     };
+  };
 
-    hardware = {
-      bluetooth = {
-        enable = true;
-        settings = {
-          General = {
-            Enable = "Source,Sink,Media,Socket";
-          };
+  hardware = {
+    bluetooth = {
+      enable = true;
+      settings = {
+        General = {
+          Enable = "Source,Sink,Media,Socket";
         };
       };
     };
+  };
 
-    services = {
-      blueman.enable = true;
-    };
+  services = {
+    blueman.enable = true;
   };
 }
