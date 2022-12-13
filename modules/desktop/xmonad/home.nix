@@ -19,6 +19,6 @@
           hpkgs.xmonad-extras
         ];
       };
-    }
+    };
   };
 }

@@ -4,7 +4,7 @@
   programs = {
     xmobar = {
       enable = true;
-      extraConfig = ./xmobar/.xmobarrc.hs;
+      extraConfig = (builtins.readFile ./xmobar/xmobarrc.hs);
     };
   };
 }

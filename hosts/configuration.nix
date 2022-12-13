@@ -54,7 +54,6 @@
       VISUAL = "nvim";
     };
     systemPackages = with pkgs; [           # Default packages install system-wide
-      ssh
       vim
       emacs
       git
