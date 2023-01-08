@@ -38,7 +38,6 @@
       dunst
       libnotify # Dunst dep
       doom-emacs
-      neovim
       rofi
       rofi-power-menu
       udiskie
