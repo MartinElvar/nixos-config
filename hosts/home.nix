@@ -53,7 +53,6 @@
       xterm
 
       flameshot
-      picom
 
       # Desktop
       ffmpeg
