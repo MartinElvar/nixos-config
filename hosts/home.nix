@@ -11,6 +11,8 @@
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
+      dconf
+
       # Terminal
       btop
       pfetch
