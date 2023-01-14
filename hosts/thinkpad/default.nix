@@ -20,6 +20,12 @@
     };
   };
 
+  networking = {
+    hostname = "Saturn-nixos";
+    wireless.enable = true;
+    networkmanager.enable = true;
+  };
+
   hardware = {
     bluetooth = {
       enable = true;
