@@ -79,7 +79,10 @@
       jack.enable = true;
     };
     flatpak.enable = true;
+    udisks2.enable = true;
   };
+
+  programs.ssh.startAgent = true;
 
   nix = {                                   # Nix Package Manager settings
     settings ={

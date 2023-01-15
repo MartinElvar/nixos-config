@@ -21,8 +21,7 @@
   };
 
   networking = {
-    hostname = "Saturn-nixos";
-    wireless.enable = true;
+    hostName = "Saturn-nixos";
     networkmanager.enable = true;
   };
 

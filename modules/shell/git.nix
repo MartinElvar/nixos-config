@@ -1,9 +1,9 @@
 {
   programs = {
     git = {
+      # difftastic.enable = true;
       enable = true;
-      difftastic.enable = true;
-      extraConfig = {
+      config = {
         user = {
           name = "Elvar";
           email = "m@martinelvar.dk";
@@ -43,7 +43,7 @@
           ci = "commit";
           br = "branch -v";
           staged = "diff --cached";
-          both = "diff HEAD"
+          both = "diff HEAD";
           count = "rev-list HEAD --count";
           up = "pull --rebase --autostash";
         };

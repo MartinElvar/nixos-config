@@ -175,133 +175,6 @@ myColorizer = colorRangeFromClassName
                 (0xc0,0xa7,0x9a) -- inactive fg
                 (0x28,0x2c,0x34) -- active fg
 
--- gridSelect menu layout
-mygridConfig :: p -> GSConfig Window
-mygridConfig colorizer = (buildDefaultGSConfig myColorizer)
-    { gs_cellheight   = 40
-    , gs_cellwidth    = 200
-    , gs_cellpadding  = 6
-    , gs_navigate    = myNavigation
-    , gs_originFractX = 0.5
-    , gs_originFractY = 0.5
-    , gs_font         = myFont
-    }
-
-spawnSelected' :: [(String, String)] -> X ()
-spawnSelected' lst = gridselect conf lst >>= flip whenJust spawn
-    where conf = def
-                   { gs_cellheight   = 40
-                   , gs_cellwidth    = 180
-                   , gs_cellpadding  = 6
-                   , gs_originFractX = 0.5
-                   , gs_originFractY = 0.5
-                   , gs_font         = myFont
-                   }
-
-runSelectedAction' :: GSConfig (X ()) -> [(String, X ())] -> X ()
-runSelectedAction' conf actions = do
-    selectedActionM <- gridselect conf actions
-    case selectedActionM of
-        Just selectedAction -> selectedAction
-        Nothing -> return ()
-
--- gsCategories =
---   [ ("Games",      spawnSelected' gsGames)
---   --, ("Education",   spawnSelected' gsEducation)
---   , ("Internet",   spawnSelected' gsInternet)
---   , ("Multimedia", spawnSelected' gsMultimedia)
---   , ("Office",     spawnSelected' gsOffice)
---   , ("Settings",   spawnSelected' gsSettings)
---   , ("System",     spawnSelected' gsSystem)
---   , ("Utilities",  spawnSelected' gsUtilities)
---   ]
-
-gsCategories =
-  [ ("Games",      "xdotool key super+alt+1")
-  , ("Education",  "xdotool key super+alt+2")
-  , ("Internet",   "xdotool key super+alt+3")
-  , ("Multimedia", "xdotool key super+alt+4")
-  , ("Office",     "xdotool key super+alt+5")
-  , ("Settings",   "xdotool key super+alt+6")
-  , ("System",     "xdotool key super+alt+7")
-  , ("Utilities",  "xdotool key super+alt+8")
-  ]
-
-gsGames =
-  [ ("0 A.D.", "0ad")
-  , ("Battle For Wesnoth", "wesnoth")
-  , ("OpenArena", "openarena")
-  , ("Sauerbraten", "sauerbraten")
-  , ("Steam", "steam")
-  , ("Unvanquished", "unvanquished")
-  , ("Xonotic", "xonotic-glx")
-  ]
-
-gsEducation =
-  [ ("GCompris", "gcompris-qt")
-  , ("Kstars", "kstars")
-  , ("Minuet", "minuet")
-  , ("Scratch", "scratch")
-  ]
-
-gsInternet =
-  [ ("Brave", "brave")
-  , ("Discord", "discord")
-  , ("Element", "element-desktop")
-  , ("Firefox", "firefox")
-  , ("LBRY App", "lbry")
-  , ("Mailspring", "mailspring")
-  , ("Nextcloud", "nextcloud")
-  , ("Qutebrowser", "qutebrowser")
-  , ("Transmission", "transmission-gtk")
-  , ("Zoom", "zoom")
-  ]
-
-gsMultimedia =
-  [ ("Audacity", "audacity")
-  , ("Blender", "blender")
-  , ("Deadbeef", "deadbeef")
-  , ("Kdenlive", "kdenlive")
-  , ("OBS Studio", "obs")
-  , ("VLC", "vlc")
-  ]
-
-gsOffice =
-  [ ("Document Viewer", "evince")
-  , ("LibreOffice", "libreoffice")
-  , ("LO Base", "lobase")
-  , ("LO Calc", "localc")
-  , ("LO Draw", "lodraw")
-  , ("LO Impress", "loimpress")
-  , ("LO Math", "lomath")
-  , ("LO Writer", "lowriter")
-  ]
-
-gsSettings =
-  [ ("ARandR", "arandr")
-  , ("ArchLinux Tweak Tool", "archlinux-tweak-tool")
-  , ("Customize Look and Feel", "lxappearance")
-  , ("Firewall Configuration", "sudo gufw")
-  ]
-
-gsSystem =
-  [ ("Alacritty", "alacritty")
-  , ("Bash", (myTerminal ++ " -e bash"))
-  , ("Htop", (myTerminal ++ " -e htop"))
-  , ("Fish", (myTerminal ++ " -e fish"))
-  , ("PCManFM", "pcmanfm")
-  , ("VirtualBox", "virtualbox")
-  , ("Virt-Manager", "virt-manager")
-  , ("Zsh", (myTerminal ++ " -e zsh"))
-  ]
-
-gsUtilities =
-  [ ("Emacs", "emacs")
-  , ("Emacsclient", "emacsclient -c -a 'emacs'")
-  , ("Nitrogen", "nitrogen")
-  , ("Vim", (myTerminal ++ " -e vim"))
-  ]
-
 myScratchPads :: [NamedScratchpad]
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "mocp" spawnMocp findMocp manageMocp
@@ -463,7 +336,7 @@ myKeys c =
   , ("M-S-<Escape>", addName "Quit XMonad"            $ io exitSuccess)
   , ("M-q", addName "Kill focused window"    $ kill1)
   , ("M-S-q", addName "Kill all windows on WS" $ killAll)
-  , ("M-r", addName "Run prompt"      $ spawn "dmenu_run")]
+  , ("M-r", addName "Run prompt"      $ spawn "rofi -show run")]
 
   ^++^ subKeys "Switch to workspace"
   [ ("M-1", addName "Switch to workspace 1"    $ (windows $ W.greedyView $ myWorkspaces !! 0))
@@ -501,27 +374,6 @@ myKeys c =
   , ("M-<Backspace>", addName "Move focused window to master"  $ promote)
   , ("M-S-,", addName "Rotate all windows except master"       $ rotSlavesDown)
   , ("M-S-.", addName "Rotate all windows current stack"       $ rotAllDown)]
-
-  -- Dmenu scripts (dmscripts)
-  -- In Xmonad and many tiling window managers, M-p is the default keybinding to
-  -- launch dmenu_run, so I've decided to use M-p plus KEY for these dmenu scripts.
-  ^++^ subKeys "Dmenu scripts"
-  [ ("M-p h", addName "List all dmscripts"     $ spawn "dm-hub")
-  , ("M-p a", addName "Choose ambient sound"   $ spawn "dm-sounds")
-  , ("M-p b", addName "Set background"         $ spawn "dm-setbg")
-  , ("M-p c", addName "Choose color scheme"    $ spawn "~/.local/bin/dtos-colorscheme")
-  , ("M-p C", addName "Pick color from scheme" $ spawn "dm-colpick")
-  , ("M-p e", addName "Edit config files"      $ spawn "dm-confedit")
-  , ("M-p i", addName "Take a screenshot"      $ spawn "dm-maim")
-  , ("M-p k", addName "Kill processes"         $ spawn "dm-kill")
-  , ("M-p m", addName "View manpages"          $ spawn "dm-man")
-  , ("M-p n", addName "Store and copy notes"   $ spawn "dm-note")
-  , ("M-p o", addName "Browser bookmarks"      $ spawn "dm-bookman")
-  , ("M-p p", addName "Passmenu"               $ spawn "passmenu -p \"Pass: \"")
-  , ("M-p q", addName "Logout Menu"            $ spawn "dm-logout")
-  , ("M-p r", addName "Listen to online radio" $ spawn "dm-radio")
-  , ("M-p s", addName "Search various engines" $ spawn "dm-websearch")
-  , ("M-p t", addName "Translate text"         $ spawn "dm-translate")]
 
   ^++^ subKeys "Favorite programs"
   [ ("M-<Return>", addName "Launch terminal"   $ spawn (myTerminal))
@@ -593,22 +445,6 @@ myKeys c =
   -- , ("M-u l", addName "mocp next"                $ spawn "mocp --next")
   -- , ("M-u h", addName "mocp prev"                $ spawn "mocp --previous")
   -- , ("M-u <Space>", addName "mocp toggle pause"  $ spawn "mocp --toggle-pause")]
-
-  ^++^ subKeys "GridSelect"
-  -- , ("C-g g", addName "Select favorite apps"     $ runSelectedAction' defaultGSConfig gsCategories)
-  [ ("M-M1-<Return>", addName "Select favorite apps" $ spawnSelected'
-       $ gsGames ++ gsEducation ++ gsInternet ++ gsMultimedia ++ gsOffice ++ gsSettings ++ gsSystem ++ gsUtilities)
-  , ("M-M1-c", addName "Select favorite apps"    $ spawnSelected' gsCategories)
-  , ("M-M1-t", addName "Goto selected window"    $ goToSelected $ mygridConfig myColorizer)
-  , ("M-M1-b", addName "Bring selected window"   $ bringSelected $ mygridConfig myColorizer)
-  , ("M-M1-1", addName "Menu of games"           $ spawnSelected' gsGames)
-  , ("M-M1-2", addName "Menu of education apps"  $ spawnSelected' gsEducation)
-  , ("M-M1-3", addName "Menu of Internet apps"   $ spawnSelected' gsInternet)
-  , ("M-M1-4", addName "Menu of multimedia apps" $ spawnSelected' gsMultimedia)
-  , ("M-M1-5", addName "Menu of office apps"     $ spawnSelected' gsOffice)
-  , ("M-M1-6", addName "Menu of settings apps"   $ spawnSelected' gsSettings)
-  , ("M-M1-7", addName "Menu of system apps"     $ spawnSelected' gsSystem)
-  , ("M-M1-8", addName "Menu of utilities apps"  $ spawnSelected' gsUtilities)]
 
   -- Emacs (SUPER-e followed by a key)
   ^++^ subKeys "Emacs"
