@@ -47,11 +47,6 @@
           count = "rev-list HEAD --count";
           up = "pull --rebase --autostash";
         };
-        url = {
-          "git://github.com/" = {
-	          insteadOf = "https://github.com/";
-          };
-        };
       };
     };
   };
