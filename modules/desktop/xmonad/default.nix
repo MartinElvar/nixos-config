@@ -62,6 +62,13 @@
 
   environment.systemPackages = with pkgs; [       # Packages installed
     xmobar
+    xclip
+    xorg.xkill
+    xorg.xrandr
+    arandr
+    autorandr
+    xterm
+    alacritty
   ];
 
   xdg.portal = {                                  # Required for flatpak with window managers

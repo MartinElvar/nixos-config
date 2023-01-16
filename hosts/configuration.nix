@@ -56,6 +56,9 @@
     systemPackages = with pkgs; [           # Default packages install system-wide
       vim
       emacs
+      ripgrep
+      coreutils
+      fd
       git
       killall
       nano
