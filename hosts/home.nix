@@ -10,6 +10,8 @@
     username = "${user}";
     homeDirectory = "/home/${user}";
 
+    file."wallpapers".source = ./wallwapers;
+
     packages = with pkgs; [
       dconf
 
