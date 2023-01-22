@@ -126,7 +126,6 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawn "killall conky"   -- kill current conky on each restart
   spawn "killall trayer"  -- kill current trayer on each restart
 
   spawnOnce "lxsession"
@@ -138,7 +137,6 @@ myStartupHook = do
 
   spawn "/usr/bin/emacs --daemon" -- emacs daemon for the emacsclient
 
-  spawn ("sleep 2 && conky")
   spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 4 --SetDockType true --SetPartialStrut true --expand true --monitor primary --transparent true --alpha 0 " ++ colorTrayer ++ " --height 22")
 
   spawn "sleep 1 && ~/.fehbg &"  -- set last saved feh wallpaper
@@ -225,7 +223,7 @@ tall     = renamed [Replace "tall"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
-           $ mySpacing 8
+           $ mySpacing 6
            $ ResizableTall 1 (3/100) (1/2) []
 monocle  = renamed [Replace "monocle"]
            $ smartBorders
@@ -236,13 +234,14 @@ monocle  = renamed [Replace "monocle"]
 floats   = renamed [Replace "floats"]
            $ smartBorders
            $ simplestFloat
-threeCol = renamed [Replace "threeCol"]
+threeCol = renamed [Replace "threeColMid"]
            $ limitWindows 7
            $ smartBorders
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
-           $ ThreeCol 1 (3/100) (1/2)
+           $ mySpacing 6
+           $ ThreeColMid 1 (3/100) (1/2)
 tabs     = renamed [Replace "tabs"]
            -- I cannot add spacing to this layout because it will
            -- add spacing between window and tabs which looks bad.

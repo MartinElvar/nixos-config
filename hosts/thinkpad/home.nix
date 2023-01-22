@@ -6,6 +6,8 @@
   ];
 
   home = {
+    file."wallpapers".source = ./wallpapers;
+
     packages = with pkgs; [
       networkmanagerapplet
       blueman
