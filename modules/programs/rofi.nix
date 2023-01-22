@@ -42,7 +42,7 @@ in
 
         "window" = {
           location = mkLiteral "northwest";
-          width = mkLiteral "280px";
+          width = mkLiteral "480px";
           x-offset = mkLiteral "8px";
           y-offset = mkLiteral "34px";
 

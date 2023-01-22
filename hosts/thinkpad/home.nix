@@ -14,6 +14,13 @@
       light
       tlp
       auto-cpufreq
+
+      # Dev
+      fly
+      postgresql
+      erlangR25
+      elixir_1_14
+      elixir_ls
     ];
   };
 

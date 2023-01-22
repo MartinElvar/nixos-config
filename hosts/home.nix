@@ -43,6 +43,7 @@
       rofi-power-menu
       udiskie
       trayer
+      kcalc
 
       # Xorg
       xclip
@@ -69,8 +70,7 @@
       haskellPackages.gtk2hs-buildtools
 
       # Dev
-      # postgres
-      # elixir
+      python3
     ];
 
     pointerCursor = {
@@ -85,6 +85,7 @@
 
   programs = {
     home-manager.enable = true;
+    autorandr.enable = true;
   };
 
   gtk = {                                     # Theming
