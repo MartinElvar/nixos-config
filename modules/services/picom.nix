@@ -33,7 +33,7 @@
       #  "100:name = 'Picture-in-Picture'"
       #  "85:class_i ?= 'rofi'"
         "80:class_i *= 'discord'"
-        "80:class_i *= 'emacs'"
+        "95:class_i *= 'emacs'"
         "80:class_i *= 'Alacritty'"
       #  "100:fullscreen"
       ];                                            # Find with $ xprop | grep "WM_CLASS"

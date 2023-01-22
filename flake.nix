@@ -18,15 +18,9 @@
         url = "github:nix-community/emacs-overlay";
         flake = false;
       };
+   };
 
-      doom-emacs = {
-        url = "github:nix-community/nix-doom-emacs";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.emacs-overlay.follows = "emacs-overlay";
-      };
-    };
-
-  outputs = inputs @ { self, nixpkgs, home-manager, nur, doom-emacs, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, nur, ... }:
     let
       user = "saturn";
       location = "$HOME/.setup";
@@ -34,7 +28,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager nur user location doom-emacs;   # Also inherit home-manager so it does not need to be defined here.
+          inherit inputs self nixpkgs home-manager nur user location;   # Also inherit home-manager so it does not need to be defined here.
         }
       );
     };

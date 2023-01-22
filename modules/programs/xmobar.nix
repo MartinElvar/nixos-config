@@ -1,10 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
-  programs = {
-    xmobar = {
-      enable = true;
-      extraConfig = (builtins.readFile ./xmobar/xmobarrc.hs);
+  xdg = {
+    configFile = {
+      "xmobar".source = ./xmobar/xmobarrc.hs;
     };
   };
 }

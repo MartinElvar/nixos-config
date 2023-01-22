@@ -1,22 +1,13 @@
-{ config, pkgs, doom-emacs, ... }:
+{ config, pkgs, ... }:
 
 {
-  imports = [ doom-emacs.hmModule ];
-
   services.emacs = {
     enable = true;
-    package = doom-emacs;
   };
 
   programs.emacs = {
     enable = true;
   };
-
-  # home.file.".doom.d" = {
-  #   source = ./doom.d
-  #   recursive = true;
-  #   onChange = readFile ./doom.d;
-  # };
 
   home = {
     sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];

@@ -13,7 +13,7 @@
         touchpad = {
           tapping = true;
           scrollMethod = "twofinger";
-          naturalScrolling = true;                # The correct way of scrolling
+          naturalScrolling = false;                # The correct way of scrolling
           accelProfile = "adaptive";              # Speed settings
           #accelSpeed = "-0.5";
           disableWhileTyping = true;

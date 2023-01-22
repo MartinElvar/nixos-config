@@ -11,7 +11,7 @@
     windowManager = {
       xmonad = {
         enable = true;
-        config = /home/saturn/nixos-config/modules/desktop/xmonad/config/xmonad.hs;
+        config = ./config/xmonad.hs;
         enableContribAndExtras = true;
         extraPackages = hpkgs: [
           hpkgs.xmobar

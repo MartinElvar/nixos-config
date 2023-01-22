@@ -89,8 +89,8 @@
 (setq lsp-enable-folding t)
 
 ;; Add origami and LSP integration
-(use-package! lsp-origami)
-(add-hook! 'lsp-after-open-hook #'lsp-origami-try-enable)
+;; (use-package! lsp-origami)
+;; (add-hook! 'lsp-after-open-hook #'lsp-origami-try-enable)
 
 
 ;; Focus treemacs buffer

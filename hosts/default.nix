@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, nur, user, location, doom-emacs, ... }:
+{ lib, inputs, nixpkgs, home-manager, nur, user, location, ... }:
 
 let
   system = "x86_64-linux";
@@ -20,7 +20,7 @@ in
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit user doom-emacs; };
+        home-manager.extraSpecialArgs = { inherit user; };
         home-manager.users.${user} = {
           imports = [(import ./home.nix)] ++ [(import ./thinkpad/home.nix)];
         };

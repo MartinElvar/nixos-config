@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, doom-emacs, ... }:
+{ config, lib, pkgs, user, ... }:
 
 {
   imports =
@@ -39,7 +39,6 @@
       alacritty
       dunst
       libnotify # Dunst dep
-      doom-emacs
       rofi
       rofi-power-menu
       udiskie
