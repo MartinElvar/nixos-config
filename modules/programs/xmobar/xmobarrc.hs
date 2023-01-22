@@ -32,7 +32,7 @@ Config { font            = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:h
        , iconRoot     = ".xmonad/xpm/"  -- default: "."
        , commands = [
                         -- Cpu usage in percent
-                      Run Cpu ["-t", "<fn=2>\xf108</fn>  cpu: (<total>%)","-H","50","--high","red"] 20
+                      Run Cpu ["-t", "<fn=2>\xf108</fn>  cpu: <total>%","-H","50","--high","red"] 20
                         -- Ram used number and percent
                     , Run Memory ["-t", "<fn=2>\xf233</fn>  mem: <used>M (<usedratio>%)"] 20
                         -- Disk space free

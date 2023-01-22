@@ -1,9 +1,9 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 {
   xdg = {
     configFile = {
-      "xmobar".source = ./xmobar/xmobarrc.hs;
+      "xmobar".source = ./xmobar;
     };
   };
 }

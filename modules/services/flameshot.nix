@@ -1,6 +1,7 @@
 { pkgs, user, ... }:
 
 {
+
   services = {
     flameshot = {
       enable = true;
