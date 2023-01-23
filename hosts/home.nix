@@ -6,6 +6,7 @@
     (import ../modules/programs) ++
     (import ../modules/services);
 
+
   home = {
     username = "${user}";
     homeDirectory = "/home/${user}";

@@ -23,6 +23,8 @@
 #       emulate zsh -c "$(direnv hook zsh)"
         # Swag
         pfetch                                  # Show fetch logo on terminal start
+        export PATH=~/.npm-packages/bin:$PATH
+        export PATH=~/.npm-packages/bin:$PATH
       '';
     };
   };

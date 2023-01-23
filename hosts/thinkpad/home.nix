@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nur, config, ... }:
 
 {
   imports = [
@@ -16,8 +16,13 @@
       auto-cpufreq
 
       # Dev
+      gnumake
+      gcc
       fly
-      postgresql
+      nodejs-19_x
+      sass
+      inotify-tools
+      postgresql_15
       erlangR25
       elixir_1_14
       elixir_ls
