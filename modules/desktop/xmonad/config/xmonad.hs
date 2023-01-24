@@ -301,7 +301,7 @@ myManageHook = composeAll
   , className =? "pinentry-gtk-2"  --> doFloat
   , className =? "splash"          --> doFloat
   , className =? "toolbar"         --> doFloat
-  , className =? "rofi"            --> doFloat
+  , className =? "rofi"            --> doCenterFloat
   , className =? "flameshot"       --> doFloat
   , className =? "Yad"             --> doCenterFloat
   , title =? "Oracle VM VirtualBox Manager"  --> doFloat
@@ -336,7 +336,7 @@ myKeys c =
   , ("M-S-<Escape>", addName "Quit XMonad"            $ io exitSuccess)
   , ("M-q", addName "Kill focused window"    $ kill1)
   , ("M-S-q", addName "Kill all windows on WS" $ killAll)
-  , ("M-r", addName "Run prompt"      $ spawn "rofi -show run")]
+  , ("M-r", addName "Run prompt"      $ spawn "rofi -show drun")]
 
   ^++^ subKeys "Switch to workspace"
   [ ("M-1", addName "Switch to workspace 1"    $ (windows $ W.greedyView $ myWorkspaces !! 0))

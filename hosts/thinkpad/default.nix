@@ -36,7 +36,6 @@
     };
   };
 
-
   programs.npm = {
     enable = true;
     npmrc = ''
@@ -47,6 +46,13 @@
 
   services = {
     blueman.enable = true;
+    logind = {
+      lidSwitch = "hybrid-sleep";
+      lidSwitchDocked = "ignore";
+      extraConfig = ''
+        HandlePowerKey=hybrid-sleep;
+      '';
+    };
     postgresql = {
       enable = true;
       package = pkgs.postgresql_15;

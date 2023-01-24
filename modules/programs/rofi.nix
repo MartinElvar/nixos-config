@@ -19,7 +19,7 @@ in
     rofi = {
       enable = true;
       terminal = "${pkgs.alacritty}/bin/alacritty";           # Alacritty is default terminal emulator
-      location = "center";
+      location = "right";
       font = "FiraCode Nerd Font Mono 11";
       theme =  with colors.scheme.doom; {
         "*" = {
@@ -41,8 +41,8 @@ in
         };
 
         "window" = {
-          location = mkLiteral "northwest";
-          width = mkLiteral "480px";
+          location = mkLiteral "center";
+          width = mkLiteral "600px";
           x-offset = mkLiteral "8px";
           y-offset = mkLiteral "34px";
 
