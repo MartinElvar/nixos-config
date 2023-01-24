@@ -18,6 +18,7 @@
       # Dev
       gnumake
       gcc
+      glibc
       fly
       nodejs-19_x
       sass
