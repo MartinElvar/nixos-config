@@ -9,11 +9,11 @@
     file."wallpapers".source = ./wallpapers;
 
     packages = with pkgs; [
-      networkmanagerapplet
       blueman
       light
       tlp
       auto-cpufreq
+      thunderbird
 
       # Dev
       gnumake

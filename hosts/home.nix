@@ -25,16 +25,20 @@
       mpv
       pavucontrol
       vlc
+      pnmixer
 
       # Apps
       brave
       firefox
+      slack
+      spotify
 
       # File management
       unzip
       unrar
       okular
-      pcmanfm
+      gnome.nautilus
+      gnome.sushi
 
       # General
       alacritty
@@ -45,6 +49,7 @@
       udiskie
       trayer
       kcalc
+      networkmanagerapplet
 
       # Xorg
       xclip
@@ -59,8 +64,6 @@
 
       # Desktop
       ffmpeg
-      slack
-      spotify
 
       # Haskell
       stack
@@ -88,6 +91,8 @@
     home-manager.enable = true;
     autorandr.enable = true;
   };
+
+  services.betterlockscreen.enable = true;
 
   gtk = {                                     # Theming
     enable = true;
