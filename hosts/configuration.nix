@@ -83,6 +83,7 @@
     };
     flatpak.enable = true;
     udisks2.enable = true;
+    autorandr.enable = true;
   };
 
   programs.ssh.startAgent = true;
