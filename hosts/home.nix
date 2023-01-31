@@ -12,7 +12,9 @@
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
+      cacert
       dconf
+      keychain
 
       # Terminal
       btop

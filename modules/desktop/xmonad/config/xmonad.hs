@@ -307,7 +307,7 @@ myManageHook = composeAll
   , title =? "Oracle VM VirtualBox Manager"  --> doFloat
   , title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
   , className =? "Brave-browser"   --> doShift ( myWorkspaces !! 1 )
-  , className =? "Spotify"            --> doShift ( myWorkspaces !! 5 )
+  , className =? "Spotify"            --> doShift ( myWorkspaces !! 4 )
   , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
   , isFullscreen -->  doFullFloat
   ] <+> namedScratchpadManageHook myScratchPads
@@ -336,7 +336,8 @@ myKeys c =
   , ("M-S-<Escape>", addName "Quit XMonad"            $ io exitSuccess)
   , ("M-q", addName "Kill focused window"    $ kill1)
   , ("M-S-q", addName "Kill all windows on WS" $ killAll)
-  , ("M-r", addName "Run prompt"      $ spawn "rofi -show drun")]
+  , ("M-r", addName "Run prompt"      $ spawn "rofi -show drun")
+  , ("M-p", addName "Run prompt"      $ spawn "rofi -show p -modi p:rofi-power-menu")]
 
   ^++^ subKeys "Switch to workspace"
   [ ("M-1", addName "Switch to workspace 1"    $ (windows $ W.greedyView $ myWorkspaces !! 0))
@@ -459,8 +460,8 @@ myKeys c =
 
   -- Multimedia Keys
   ^++^ subKeys "Multimedia keys"
-  [ ("<XF86MonBrightnessUp>", addName "Brightness up"           $ spawn "light -A 10")
-  , ("<XF86MonBrightnessDown>", addName "Brightness down"           $ spawn "light -U 10")
+  [ ("<XF86MonBrightnessUp>", addName "Brightness up"           $ spawn "brightnessctl s +10%")
+  , ("<XF86MonBrightnessDown>", addName "Brightness down"           $ spawn "brightnessctl s 10%-")
   -- , ("<XF86AudioPlay>", addName "mocp play"           $ spawn "mocp --play")
   -- , ("<XF86AudioPrev>", addName "mocp next"           $ spawn "mocp --previous")
   -- , ("<XF86AudioNext>", addName "mocp prev"           $ spawn "mocp --next")

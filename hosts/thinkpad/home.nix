@@ -9,8 +9,10 @@
     file."wallpapers".source = ./wallpapers;
 
     packages = with pkgs; [
+      xorg.xbacklight
       blueman
       light
+      brightnessctl
       tlp
       auto-cpufreq
       thunderbird
@@ -19,7 +21,7 @@
       gnumake
       gcc
       glibc
-      fly
+      flyctl
       nodejs-19_x
       sass
       inotify-tools

@@ -86,7 +86,11 @@
     autorandr.enable = true;
   };
 
-  programs.ssh.startAgent = true;
+  # programs.ssh.startAgent = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   nix = {                                   # Nix Package Manager settings
     settings ={

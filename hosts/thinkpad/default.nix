@@ -8,7 +8,9 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    # initrd.kernelModules = [ "amdgpu" ];
+    kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate.shared_mem=1" ];
+    
+    initrd.kernelModules = [ "amdgpu" "amd-pstate" ];
 
     loader = {                                  # For legacy boot:
       systemd-boot = {
@@ -26,6 +28,7 @@
   };
 
   hardware = {
+    acpilight.enable = true;
     bluetooth = {
       enable = true;
       settings = {
@@ -37,6 +40,7 @@
   };
 
   programs.nix-ld.enable = true;
+  programs.light.enable = true;
 
   programs.npm = {
     enable = true;
