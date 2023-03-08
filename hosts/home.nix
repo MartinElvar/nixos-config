@@ -34,6 +34,7 @@
       firefox
       slack
       spotify
+      libreoffice
 
       # File management
       unzip

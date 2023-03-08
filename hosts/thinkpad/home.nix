@@ -11,11 +11,12 @@
     packages = with pkgs; [
       xorg.xbacklight
       blueman
-      light
       brightnessctl
       tlp
       auto-cpufreq
       thunderbird
+
+      linuxKernel.packages.linux_6_1.cpupower
 
       # Dev
       gnumake

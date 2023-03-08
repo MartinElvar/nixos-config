@@ -40,7 +40,6 @@
   };
 
   programs.nix-ld.enable = true;
-  programs.light.enable = true;
 
   programs.npm = {
     enable = true;
@@ -51,12 +50,15 @@
   };
 
   services = {
+    auto-cpufreq.enable = true;
     blueman.enable = true;
     logind = {
       lidSwitch = "hybrid-sleep";
       lidSwitchDocked = "ignore";
       extraConfig = ''
-        HandlePowerKey=hybrid-sleep;
+        IdleAction=ignore
+        IdleActionSec=120min
+        HandlePowerKey=hybrid-sleep
       '';
     };
     postgresql = {
