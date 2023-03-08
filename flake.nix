@@ -25,12 +25,6 @@
       user = "saturn";
       location = "$HOME/.setup";
     in {
-      nixpkgs.config.packageOverrides = pkgs: rec {
-        wpa_supplicant = pkgs.wpa_supplicant.overrideAttrs (attrs: {
-          patches = attrs.patches ++ [ ./bloxhub.patch ];
-        });
-      };
-
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;

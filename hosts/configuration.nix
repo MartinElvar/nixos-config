@@ -47,6 +47,12 @@
     })
   ];
 
+      pkgs.config.packageOverrides = pkgs: rec {
+        wpa_supplicant = pkgs.wpa_supplicant.overrideAttrs (attrs: {
+          patches = attrs.patches ++ [ ./bloxhub.patch ];
+        });
+      };
+
   environment = {
     variables = {
       TERMINAL = "alacritty";
