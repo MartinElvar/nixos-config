@@ -47,11 +47,12 @@
     })
   ];
 
-      pkgs.config.packageOverrides = pkgs: rec {
-        wpa_supplicant = pkgs.wpa_supplicant.overrideAttrs (attrs: {
-          patches = attrs.patches ++ [ ./bloxhub.patch ];
-        });
-      };
+  # Blox uses deprecated PEAP, downgrade openssl with this patch.
+  nixpkgs.config.packageOverrides = pkgs: rec {
+    wpa_supplicant = pkgs.wpa_supplicant.overrideAttrs (attrs: {
+      patches = attrs.patches ++ [ ./bloxhub.patch ];
+    });
+  };
 
   environment = {
     variables = {
