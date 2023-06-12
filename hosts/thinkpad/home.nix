@@ -24,7 +24,7 @@
       gcc
       glibc
       flyctl
-      nodejs-19_x
+      nodejs_20
       sass
       inotify-tools
       postgresql_15
