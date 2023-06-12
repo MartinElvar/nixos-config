@@ -61,6 +61,7 @@
       VISUAL = "nvim";
     };
     systemPackages = with pkgs; [           # Default packages install system-wide
+      nix-index 
       vim
       emacs
       ripgrep

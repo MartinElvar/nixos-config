@@ -8,9 +8,9 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate.shared_mem=1" ];
+    kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
     
-    initrd.kernelModules = [ "amdgpu" "amd-pstate" ];
+    initrd.kernelModules = [ "amdgpu" ];
 
     loader = {                                  # For legacy boot:
       systemd-boot = {

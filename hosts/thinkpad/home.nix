@@ -15,6 +15,7 @@
       tlp
       auto-cpufreq
       thunderbird
+      magic-wormhole
 
       linuxKernel.packages.linux_6_1.cpupower
 
@@ -28,8 +29,12 @@
       inotify-tools
       postgresql_15
       erlangR25
-      elixir_1_14
-      elixir_ls
+      elixir
+      #elixir-ls
+      mosquitto
+      influxdb2
+      cmake
+      libgccjit
     ];
   };
 
