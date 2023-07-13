@@ -28,9 +28,9 @@
       sass
       inotify-tools
       postgresql_15
-      erlangR25
-      elixir
-      #elixir-ls
+      erlang_26
+      elixir_1_15
+      # elixir-ls
       mosquitto
       influxdb2
       cmake

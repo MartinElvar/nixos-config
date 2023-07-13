@@ -76,6 +76,7 @@
       rsync
       usbutils
       pipewire
+      xclip
     ];
   };
 
