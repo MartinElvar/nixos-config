@@ -96,6 +96,7 @@
   };
 
   services.betterlockscreen.enable = true;
+  services.caffeine.enable = true;
 
   gtk = {                                     # Theming
     enable = true;

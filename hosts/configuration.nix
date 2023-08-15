@@ -33,9 +33,16 @@
     };
   };
 
-  fonts.fonts = with pkgs; [                # Fonts
+  fonts.packages = with pkgs; [                # Fonts
     carlito                                 # NixOS
     vegur                                   # NixOS
+
+    dejavu_fonts
+    freefont_ttf
+    gyre-fonts # TrueType substitutes for standard PostScript fonts
+    liberation_ttf
+    unifont
+    noto-fonts-emoji
     source-code-pro
     jetbrains-mono
     font-awesome                            # Icons
@@ -61,6 +68,7 @@
       VISUAL = "nvim";
     };
     systemPackages = with pkgs; [           # Default packages install system-wide
+      beamPackages.rebar3
       nix-index 
       vim
       emacs
@@ -125,6 +133,6 @@
       enable = true;
       channel = "https://nixos.org/channels/nixos-unstable";
     };
-    stateVersion = "22.05";
+    stateVersion = "23.05";
   };
 }
