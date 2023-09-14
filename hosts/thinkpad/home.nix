@@ -8,7 +8,7 @@
   home = {
     file."wallpapers".source = ./wallpapers;
 
-    packages = with pkgs; ([
+    packages = with pkgs; [
       xorg.xbacklight
       blueman
       brightnessctl
@@ -40,7 +40,7 @@
       elixir_1_15
       elixir-ls
       mosquitto
-      # influxdb2
+      influxdb2
       cmake
       libgccjit
     ];
