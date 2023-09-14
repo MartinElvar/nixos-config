@@ -1,12 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, fetchpatch, ... }:
 
 {
   programs = {
     helix = {
       enable = true;
+      package = pkgs.helix;
 
       settings = {
-        theme = "default";
+        theme = "catppuccin_macchiato";
       };
 
       languages.language = [{

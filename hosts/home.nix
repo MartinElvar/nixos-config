@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, ... }:
+{ config, lib, pkgs, user, fetchpatch, ... }:
 
 {
   imports =
@@ -75,9 +75,6 @@
       haskellPackages.hoogle
       haskellPackages.ghcide
       haskellPackages.gtk2hs-buildtools
-
-      # Dev
-      python3
     ];
 
     pointerCursor = {

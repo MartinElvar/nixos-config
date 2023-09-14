@@ -33,31 +33,17 @@
       wxGTK32
       ncurses
       m4
-
-      # beam.packages.erlang_26.elixir_1_15
-      # beam.packages.erlang_26.rebar3
+      jdk20
+      python311
+      python311Packages.pip
       nodePackages.typescript-language-server
-      # elixir_1_15
-      # elixir-ls
+      elixir_1_15
+      elixir-ls
       mosquitto
-      influxdb2
+      # influxdb2
       cmake
       libgccjit
-    ]) ++ (
-      let 
-        beamPkg = beam.packagesWith erlang_26;
-
-        elixir_ls = beamPkg.elixir-ls.override {
-          elixir = beamPkg.elixir_1_15;
-            # erlang = erlang_26;
-          mixRelease = beamPkg.mixRelease.override { 
-            elixir = elixir_1_15; 
-          };    
-        };
-      in
-      [
-        elixir_ls
-      ]);
+    ];
   };
 
   services = {

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, user, location, ... }:
+{ config, lib, pkgs, inputs, user, location, fetchpatch, ... }:
 
 {
   imports =
@@ -68,8 +68,7 @@
       VISUAL = "nvim";
     };
     systemPackages = with pkgs; [           # Default packages install system-wide
-      beamPackages.rebar3
-      nix-index 
+      nix-index
       vim
       emacs
       ripgrep
@@ -85,6 +84,7 @@
       usbutils
       pipewire
       xclip
+      helix
     ];
   };
 
