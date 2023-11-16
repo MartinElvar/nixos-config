@@ -16,11 +16,13 @@
       auto-cpufreq
       thunderbird
       chromium
+      openvpn3
       magic-wormhole
 
       linuxKernel.packages.linux_6_1.cpupower
 
       # Dev
+      vscode
       gnumake
       gcc
       glibc
@@ -29,20 +31,20 @@
       sass
       inotify-tools
       postgresql_15
-      elixir_1_15
       wxGTK32
       ncurses
       m4
       jdk20
       python311
       python311Packages.pip
-      nodePackages.typescript-language-server
-      elixir_1_15
-      elixir-ls
       mosquitto
       influxdb2
       cmake
       libgccjit
+      erlang
+      elixir
+      elixir-ls
+      vscode-langservers-extracted
     ];
   };
 

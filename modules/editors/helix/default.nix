@@ -20,7 +20,7 @@
         diagnostic-severity = "Hint";
         comment-token = "#";
         indent = {tab-width = 2; unit = " ";};
-        language-server = {command = "elixir-ls";};
+        language-servers = ["elixir-ls"];
       }];
     };
   };

@@ -53,6 +53,7 @@
       trayer
       kcalc
       networkmanagerapplet
+      networkmanager-openvpn
 
       # Xorg
       xclip
@@ -64,6 +65,7 @@
       xterm
 
       flameshot
+      caffeine-ng
 
       # Desktop
       ffmpeg

@@ -24,7 +24,11 @@
 
   networking = {
     hostName = "Saturn-nixos";
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      plugins = [pkgs.networkmanager-openvpn];
+    };
+
   };
 
   hardware = {
@@ -48,6 +52,8 @@
       color=true
     '';
   };
+
+  programs.openvpn3.enable = true;
 
   services = {
     auto-cpufreq.enable = true;
