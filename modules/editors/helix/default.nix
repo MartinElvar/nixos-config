@@ -1,4 +1,4 @@
-{ pkgs, fetchpatch, ... }:
+{ pkgs, ... }:
 
 {
   programs = {

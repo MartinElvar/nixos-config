@@ -77,5 +77,11 @@
         host all all ::1/128 trust
       '';
     };
-  };
+
+   udev.packages = with pkgs; [ 
+        ledger-udev-rules
+        trezor-udev-rules
+        # potentially even more if you need them
+    ];  
+    };
 }

@@ -4,9 +4,11 @@
   services = {
     xserver = {
       enable = true;
-      layout = "us";
-      xkbVariant = "mac";
-      xkbOptions = "caps:super";
+      xkb = {
+        layout = "us";
+        variant = "mac";
+        options = "caps:super";
+      };
 
       libinput = {
         enable = true;
@@ -74,5 +76,6 @@
   xdg.portal = {                                  # Required for flatpak with window managers
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
   };
 }

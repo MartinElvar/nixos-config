@@ -4,18 +4,18 @@
   config = lib.mkIf (config.xsession.enable) {             # Only evaluate code if using X11
     services.picom = {
       enable = true;
-      package = pkgs.picom.overrideAttrs(o: {
-        src = pkgs.fetchFromGitHub {
-          #repo = "picom";
-          #owner = "pijulius";
-          #rev = "982bb43e5d4116f1a37a0bde01c9bda0b88705b9";
-          #sha256 = "YiuLScDV9UfgI1MiYRtjgRkJ0VuA1TExATA2nJSJMhM=";
-          repo = "picom";
-          owner = "jonaburg";
-          rev = "e3c19cd7d1108d114552267f302548c113278d45";
-          sha256 = "4voCAYd0fzJHQjJo4x3RoWz5l3JJbRvgIXn1Kg6nz6Y=";
-        };
-      });                                           # Override picom to use pijulius' version
+      # package = pkgs.picom.overrideAttrs(o: {
+      #   src = pkgs.fetchFromGitHub {
+      #     #repo = "picom";
+      #     #owner = "pijulius";
+      #     #rev = "982bb43e5d4116f1a37a0bde01c9bda0b88705b9";
+      #     #sha256 = "YiuLScDV9UfgI1MiYRtjgRkJ0VuA1TExATA2nJSJMhM=";
+      #     repo = "picom";
+      #     owner = "jonaburg";
+      #     rev = "e3c19cd7d1108d114552267f302548c113278d45";
+      #     sha256 = "4voCAYd0fzJHQjJo4x3RoWz5l3JJbRvgIXn1Kg6nz6Y=";
+      #   };
+      # });                                           # Override picom to use pijulius' version
 
       backend = "glx";                              # Rendering either with glx or xrender. You'll know if you need to switch this.
       vSync = true;                                 # Should fix screen tearing

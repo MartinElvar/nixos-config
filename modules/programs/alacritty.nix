@@ -9,10 +9,10 @@
           normal.family = "Source Code Pro";
           bold = { style = "Bold"; };
           #size = 8;
-        };
-        offset = {                            # Positioning
-          x = -1;
-          y = 0;
+          offset = {                            # Positioning
+            x = -1;
+            y = 0;
+          };
         };
       };
     };
