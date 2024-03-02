@@ -14,17 +14,19 @@
         plugins = [ "git" ];
       };
 
-      shellInit = ''                            # Zsh theme
+      interactiveShellInit = ''
         # Spaceship
         source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
         autoload -U promptinit; promptinit
-#       source $HOME/.config/shell/shell_init
-        # Hook direnv
-#       emulate zsh -c "$(direnv hook zsh)"
+
         # Swag
         pfetch                                  # Show fetch logo on terminal start
-        export PATH=~/.npm-packages/bin:$PATH
-        export PATH=~/.npm-packages/bin:$PATH
+      '';
+
+      shellInit = ''                            # Zsh theme
+        # Hook direnv
+#       emulate zsh -c "$(direnv hook zsh)"
+        # export PATH=~/.npm-packages/bin:$PATH
       '';
     };
   };
