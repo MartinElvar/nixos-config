@@ -70,7 +70,8 @@
     postgresql = {
       enable = true;
       package = pkgs.postgresql_15;
-      extraPlugins = with pkgs.postgresql_15.pkgs; [ postgis ];
+      extraPlugins = with pkgs.postgresql_15.pkgs; [ postgis timescaledb ];
+      settings.shared_preload_libraries = "timescaledb";
       authentication = pkgs.lib.mkOverride 10 ''
         local all all trust
         host all all 127.0.0.1/32 trust

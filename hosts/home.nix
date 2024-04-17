@@ -34,6 +34,7 @@
       firefox
       slack
       spotify
+      obsidian
       libreoffice
 
       # File management

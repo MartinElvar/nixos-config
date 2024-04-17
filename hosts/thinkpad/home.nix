@@ -22,7 +22,7 @@
       udev
 
       trezord
-      trezor-suite 
+      # trezor-suite 
       trezor-udev-rules
       
       linuxKernel.packages.linux_6_1.cpupower

@@ -40,7 +40,6 @@
             };
           };
         };
-        defaultSession = "none+xmonad";            # none+bspwm -> no real display manager
       };
 
       windowManager= {
@@ -58,7 +57,9 @@
         ${pkgs.xorg.xrandr}/bin/xrandr --mode 1920x1080 --pos 0x0 --rotate normal
       '';
     };
+  displayManager.defaultSession = "none+xmonad";            # none+xmonad-> no real display manager
   };
+
 
   programs.zsh.enable = true;
 
