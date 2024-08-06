@@ -2,24 +2,24 @@
 
 {
   services = {
+    libinput = {
+      enable = true;
+      touchpad = {
+        tapping = true;
+        scrollMethod = "twofinger";
+        naturalScrolling = false;                # The correct way of scrolling
+        accelProfile = "adaptive";              # Speed settings
+        #accelSpeed = "-0.5";
+        disableWhileTyping = true;
+      };
+    };
+  
     xserver = {
       enable = true;
       xkb = {
         layout = "us";
         variant = "mac";
         options = "caps:super";
-      };
-
-      libinput = {
-        enable = true;
-        touchpad = {
-          tapping = true;
-          scrollMethod = "twofinger";
-          naturalScrolling = false;                # The correct way of scrolling
-          accelProfile = "adaptive";              # Speed settings
-          #accelSpeed = "-0.5";
-          disableWhileTyping = true;
-        };
       };
 
       displayManager = {                          # Display Manager

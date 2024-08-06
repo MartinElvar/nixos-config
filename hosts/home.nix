@@ -36,13 +36,14 @@
       spotify
       obsidian
       libreoffice
+      pinta
 
       # File management
       unzip
       unrar
       okular
-      gnome.nautilus
-      gnome.sushi
+      nautilus
+      sushi
 
       # General
       alacritty

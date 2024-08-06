@@ -56,7 +56,6 @@
   programs.openvpn3.enable = true;
 
   services = {
-    auto-cpufreq.enable = true;
     blueman.enable = true;
     logind = {
       lidSwitch = "hybrid-sleep";
@@ -67,6 +66,8 @@
         HandlePowerKey=hybrid-sleep
       '';
     };
+
+    # Development.
     postgresql = {
       enable = true;
       package = pkgs.postgresql_15;
@@ -79,10 +80,19 @@
       '';
     };
 
-   udev.packages = with pkgs; [ 
-        ledger-udev-rules
-        trezor-udev-rules
-        # potentially even more if you need them
-    ];  
+    grafana = {
+      enable = true;
+      settings.server = {
+        http_port = 3005;
+        http_addr = "127.0.0.1";
+        domain = "localhost";
+      };
     };
+
+    udev.packages = with pkgs; [ 
+      ledger-udev-rules
+      trezor-udev-rules
+      # potentially even more if you need them
+    ];  
+  };
 }

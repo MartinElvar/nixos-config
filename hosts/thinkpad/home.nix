@@ -13,11 +13,10 @@
       blueman
       brightnessctl
       tlp
-      auto-cpufreq
       thunderbird
       chromium
       openvpn3
-      magic-wormhole
+      # magic-wormhole
 
       udev
 
@@ -29,9 +28,7 @@
 
       # Dev
       vscode
-      gnumake
-      gcc
-      glibc
+      zed-editor
       flyctl
       nodejs_20
       sass
@@ -40,13 +37,14 @@
       wxGTK32
       ncurses
       m4
-      jdk20
       python311
       python311Packages.pip
       mosquitto
-      influxdb2
       cmake
       libgccjit
+      gnumake
+      gcc
+      glibc
       erlang
       elixir
       elixir-ls
