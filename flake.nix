@@ -14,13 +14,19 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
+      
+      nix-ld = {
+        url = "github:Mic92/nix-ld";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
       emacs-overlay = {                                                     # Emacs Overlays
         url = "github:nix-community/emacs-overlay";
         flake = false;
       };
    };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, nur, ... }:
+  outputs = inputs @ { self, nix-ld,  nixpkgs, home-manager, nur, ... }:
     let
       user = "saturn";
       location = "$HOME/.setup";
@@ -28,7 +34,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs self nixpkgs home-manager nur user location;   # Also inherit home-manager so it does not need to be defined here.
+          inherit inputs self nixpkgs home-manager nur user location nix-ld;   # Also inherit home-manager so it does not need to be defined here.
         }
       );
     };

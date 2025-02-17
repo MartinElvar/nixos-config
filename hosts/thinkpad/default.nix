@@ -22,13 +22,21 @@
     };
   };
 
+  # swapDevices = [{
+    # device = "/swapfile";
+    # size = 32 * 1024; # 16GB
+  # }];
+
   networking = {
     hostName = "Saturn-nixos";
     networkmanager = {
       enable = true;
-      plugins = [pkgs.networkmanager-openvpn];
+      # plugins = [pkgs.networkmanager-openvpn];
     };
 
+    firewall.enable = true;
+    firewall.interfaces.wlp3s0.allowedTCPPorts = [ 4000 3001 ];
+    firewall.trustedInterfaces = ["wlp3s0"];
   };
 
   hardware = {
@@ -44,7 +52,9 @@
   };
 
   programs.nix-ld.enable = true;
-
+  programs.autojump.enable = true;
+  programs.lazygit.enable = true;
+  # programs.openvpn3.enable = true;
   programs.npm = {
     enable = true;
     npmrc = ''
@@ -52,8 +62,6 @@
       color=true
     '';
   };
-
-  programs.openvpn3.enable = true;
 
   services = {
     blueman.enable = true;
@@ -71,7 +79,8 @@
     postgresql = {
       enable = true;
       package = pkgs.postgresql_15;
-      extraPlugins = with pkgs.postgresql_15.pkgs; [ postgis timescaledb ];
+      # extraPlugins = with pkgs.postgresql_15.pkgs; [ postgis ];
+      extensions = with pkgs.postgresql_15.pkgs; [ postgis timescaledb pgvector];
       settings.shared_preload_libraries = "timescaledb";
       authentication = pkgs.lib.mkOverride 10 ''
         local all all trust
@@ -79,6 +88,10 @@
         host all all ::1/128 trust
       '';
     };
+
+    
+    redis.servers.cocoach.enable = true;
+    # redis.servers.cocoach.user = "admin";
 
     grafana = {
       enable = true;
@@ -89,10 +102,10 @@
       };
     };
 
-    udev.packages = with pkgs; [ 
-      ledger-udev-rules
-      trezor-udev-rules
+    # udev.packages = with pkgs; [ 
+      # ledger-udev-rules
+      # trezor-udev-rules
       # potentially even more if you need them
-    ];  
+    # ];  
   };
 }

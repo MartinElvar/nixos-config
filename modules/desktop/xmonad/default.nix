@@ -69,7 +69,6 @@
     xorg.xkill
     xorg.xrandr
     arandr
-    autorandr
     xterm
     alacritty
   ];

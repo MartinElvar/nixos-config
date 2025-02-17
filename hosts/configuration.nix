@@ -40,11 +40,7 @@
     jetbrains-mono
     font-awesome                            # Icons
     corefonts                               # MS
-    (nerdfonts.override {                   # Nerdfont Icons override
-      fonts = [
-        "FiraCode"
-      ];
-    })
+    nerd-fonts.fira-code
   ];
 
   # Blox uses deprecated PEAP, downgrade openssl with this patch.
@@ -77,7 +73,7 @@
       usbutils
       pipewire
       xclip
-      helix
+      gcc
     ];
   };
 
@@ -105,6 +101,7 @@
   nix = {                                   # Nix Package Manager settings
     settings ={
       auto-optimise-store = true;           # Optimise syslinks
+      trusted-users = ["root" "saturn"];
     };
     gc = {                                  # Automatic garbage collection
       automatic = true;

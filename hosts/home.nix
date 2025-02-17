@@ -10,6 +10,9 @@
   home = {
     username = "${user}";
     homeDirectory = "/home/${user}";
+    sessionPath = [
+      "/home/saturn/.mix/escripts"
+    ];
 
     packages = with pkgs; [
       cacert
@@ -37,7 +40,10 @@
       obsidian
       libreoffice
       pinta
-
+      signal-desktop
+      helix
+      helix-gpt
+      
       # File management
       unzip
       unrar
@@ -93,7 +99,7 @@
 
   programs = {
     home-manager.enable = true;
-    autorandr.enable = true;
+    # autorandr.enable = true;
   };
 
   services.betterlockscreen.enable = true;

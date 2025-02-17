@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, nur, user, location, ... }:
+{ lib, inputs, nixpkgs, home-manager, nur, user, location, nix-ld, ... }:
 
 let
   system = "x86_64-linux";
@@ -14,7 +14,8 @@ in
     inherit system;
     specialArgs = { inherit inputs user location; };
     modules = [
-      nur.nixosModules.nur
+      nur.modules.nixos.default
+
       ./thinkpad
       ./configuration.nix
 

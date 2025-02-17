@@ -15,25 +15,21 @@
       tlp
       thunderbird
       chromium
-      openvpn3
+      # openvpn3
       # magic-wormhole
 
-      udev
-
-      trezord
+      # udev
+      # trezord
       # trezor-suite 
-      trezor-udev-rules
+      # trezor-udev-rules
       
       linuxKernel.packages.linux_6_1.cpupower
 
       # Dev
       vscode
-      zed-editor
       flyctl
-      nodejs_20
-      sass
       inotify-tools
-      postgresql_15
+      postgresql
       wxGTK32
       ncurses
       m4
@@ -41,15 +37,26 @@
       python311Packages.pip
       mosquitto
       cmake
-      libgccjit
+      # libgccjit
       gnumake
-      gcc
-      glibc
       erlang
-      elixir
+      elixir_1_17
       elixir-ls
       vscode-langservers-extracted
-    ];
+      ghostscript
+      devbox
+      poppler_utils
+      tesseract
+      hoppscotch
+      rustup
+
+      # CoCoach
+      zoom-us
+      redis
+      wkhtmltopdf
+      devenv
+      ngrok
+   ];
   };
 
   services = {
