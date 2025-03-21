@@ -2,7 +2,6 @@
 
 {
   imports =
-    # [(import ../modules/editors/emacs/native.nix)] ++
     (import ../modules/shell);
 
   users.users.${user} = {
@@ -41,6 +40,10 @@
     font-awesome                            # Icons
     corefonts                               # MS
     nerd-fonts.fira-code
+    noto-fonts-emoji
+    noto-fonts-cjk-sans
+    symbola
+    material-icons
   ];
 
   # Blox uses deprecated PEAP, downgrade openssl with this patch.
@@ -89,7 +92,6 @@
     };
     flatpak.enable = true;
     udisks2.enable = true;
-    autorandr.enable = true;
   };
 
   # programs.ssh.startAgent = true;

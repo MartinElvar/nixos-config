@@ -43,11 +43,12 @@
       signal-desktop
       helix
       helix-gpt
-      
+      kdePackages.filelight      
+
       # File management
       unzip
       unrar
-      okular
+      kdePackages.okular
       nautilus
       sushi
 
@@ -59,7 +60,7 @@
       rofi-power-menu
       udiskie
       trayer
-      kcalc
+      kdePackages.kcalc
       networkmanagerapplet
       networkmanager-openvpn
 
@@ -77,14 +78,6 @@
 
       # Desktop
       ffmpeg
-
-      # Haskell
-      stack
-      cabal-install
-      stylish-haskell
-      haskellPackages.hoogle
-      haskellPackages.ghcide
-      haskellPackages.gtk2hs-buildtools
     ];
 
     pointerCursor = {
@@ -99,11 +92,12 @@
 
   programs = {
     home-manager.enable = true;
-    # autorandr.enable = true;
+    autorandr.enable = true;
   };
 
   services.betterlockscreen.enable = true;
   services.caffeine.enable = true;
+  services.autorandr.enable = true;
 
   gtk = {                                     # Theming
     enable = true;

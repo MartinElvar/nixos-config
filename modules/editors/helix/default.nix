@@ -11,16 +11,24 @@
       };
 
       languages = {
-        language-server.gpt = {
-          command = "helix-gpt"; 
+        language-server.solargraph.config = {
+          diagnostics = true;
+          formatting = true; 
+          documentFormatting = true;
+          command = "bundle";
+          args = ["exec" "solargraph" "stdio"];
         };
 
-        language-server.solargraph.config = {
-           diagnostics = true;
-           formatting = true; 
-           documentFormatting = true;
+        language-server.ruby = {
+          config = {
+            diagnostics = true;
+            formatting = true; 
+            documentFormatting = true;
+          };
+          command = "bundle";
+          args = ["exec" "solargraph" "stdio"];
         };
-      
+
         language = [
           {
             name = "elixir";
@@ -32,11 +40,14 @@
             diagnostic-severity = "hint";
             comment-token = "#";
             indent = {tab-width = 2; unit = " ";};
-            language-servers = ["elixir-ls" "gpt"];
+            language-servers = ["elixir-ls"];
           }
           {
             name = "ruby";
-            language-servers = ["solargraph" "gpt"];
+            file-types = ["rb" "rake" "rakefile" "irb" "gemfile" "gemspec" "Rakefile" "Gemfile" "rabl" "jbuilder" "jb" "builder"];
+            language-servers = ["ruby"];
+            # formatter = { command = "prettier"; args = ["--parser" "ruby"]; };
+            auto-format = true;      
           }
         ];
       };
