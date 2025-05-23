@@ -69,7 +69,6 @@
       xorg.xev
       xorg.xkill
       xorg.xrandr
-      autorandr
       arandr
       xterm
 
@@ -92,12 +91,13 @@
 
   programs = {
     home-manager.enable = true;
-    autorandr.enable = true;
+  #   autorandr.enable = true;
   };
 
-  services.betterlockscreen.enable = true;
-  services.caffeine.enable = true;
-  services.autorandr.enable = true;
+  services = {
+    betterlockscreen.enable = true;
+    caffeine.enable = true;
+  };
 
   gtk = {                                     # Theming
     enable = true;

@@ -18,7 +18,7 @@
       # openvpn3
       # magic-wormhole
 
-      # udev
+      udev
       # trezord
       # trezor-suite 
       # trezor-udev-rules

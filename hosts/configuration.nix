@@ -10,6 +10,8 @@
     shell = pkgs.zsh;
   };
   security.sudo.wheelNeedsPassword = false;
+  security.pam.services.betterlockscreen.enable = true;
+  security.pam.services.i3lock.enable = true;
 
   time.timeZone = "Europe/Copenhagen";
   i18n = {
@@ -59,7 +61,10 @@
       EDITOR = "nvim";
       VISUAL = "nvim";
     };
-    systemPackages = with pkgs; [           # Default packages install system-wide
+    systemPackages = with pkgs;
+      let
+      my-nvim = inputs.nvim.packages.${system}.default;
+      in [           # Default packages install system-wide
       nix-index
       vim
       emacs
@@ -77,6 +82,7 @@
       pipewire
       xclip
       gcc
+      autorandr
     ];
   };
 
@@ -92,12 +98,36 @@
     };
     flatpak.enable = true;
     udisks2.enable = true;
+    autorandr.enable = true;
+
+    udev.enable = true;
+    udev.extraRules = ''ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.autorandr}/bin/autorandr -c"'';
+
+      # Printer
+    printing.browsing = true;
+    printing.browsedConf = ''
+    BrowseDNSSDSubTypes _cups,_print
+    BrowseLocalProtocols all
+    BrowseRemoteProtocols all
+    CreateIPPPrinterQueues All
+
+    BrowseProtocols all
+    '';
+
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
   };
 
+  
+
   # programs.ssh.startAgent = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
   };
 
   nix = {                                   # Nix Package Manager settings
