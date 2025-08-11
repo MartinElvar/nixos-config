@@ -49,6 +49,7 @@
   ];
 
   # Blox uses deprecated PEAP, downgrade openssl with this patch.
+  nixpkgs.config.allowUnsupportedSystem = true;
   nixpkgs.config.packageOverrides = pkgs: rec {
     wpa_supplicant = pkgs.wpa_supplicant.overrideAttrs (attrs: {
       patches = [ ./bloxhub.patch ];
@@ -67,6 +68,7 @@
       in [           # Default packages install system-wide
       nix-index
       vim
+      my-nvim
       emacs
       ripgrep
       coreutils

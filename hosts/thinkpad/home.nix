@@ -15,6 +15,8 @@
       tlp
       thunderbird
       chromium
+      discord
+      ksnip
       # openvpn3
       # magic-wormhole
 
@@ -37,11 +39,12 @@
       python311Packages.pip
       mosquitto
       cmake
+      zellij
       # libgccjit
       gnumake
-      erlang
-      elixir_1_17
-      elixir-ls
+      beamMinimal28Packages.erlang
+      beamMinimal28Packages.elixir_1_19
+      beamMinimal28Packages.elixir-ls
       vscode-langservers-extracted
       ghostscript
       devbox

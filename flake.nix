@@ -17,8 +17,9 @@
 
       nvim = {
         url = "path:./lazyvim";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
-     };
+    };
 
   outputs = inputs @ { self, nix-ld,  nixpkgs, home-manager, ... }:
     let

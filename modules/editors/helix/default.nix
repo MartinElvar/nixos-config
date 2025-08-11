@@ -8,7 +8,11 @@
 
       settings = {
         theme = "catppuccin_macchiato";
+        keys.normal = {
+          C-g = [":new" ":insert-output lazygit" ":buffer-close!" ":redraw"];
+        };
       };
+
 
       languages = {
         language-server.solargraph.config = {

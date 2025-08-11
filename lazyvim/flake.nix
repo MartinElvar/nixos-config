@@ -5,6 +5,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
 
     # neovim-nightly-overlay = {
@@ -89,6 +90,7 @@
           fd
           stdenv.cc.cc
           lua-language-server
+          beamMinimal28Packages.elixir-ls
           nil # I would go for nixd but lazy chooses this one idk
           stylua
         ];

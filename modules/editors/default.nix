@@ -1,5 +1,4 @@
 [
-  ./nvim
   ./emacs
   ./helix
 ]
