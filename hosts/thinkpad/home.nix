@@ -1,8 +1,9 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
     ../../modules/desktop/xmonad/home.nix
+    ../../modules/desktop/hyprland/home.nix
   ];
 
   home = {
@@ -22,9 +23,9 @@
 
       udev
       # trezord
-      # trezor-suite 
+      # trezor-suite
       # trezor-udev-rules
-      
+
       linuxKernel.packages.linux_6_1.cpupower
 
       # Dev
@@ -56,10 +57,8 @@
       # CoCoach
       zoom-us
       redis
-      wkhtmltopdf
-      devenv
       ngrok
-   ];
+    ];
   };
 
   services = {

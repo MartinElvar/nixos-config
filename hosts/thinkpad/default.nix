@@ -1,30 +1,36 @@
-{ config, pkgs, user, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [(import ./hardware-configuration.nix)] ++
-    [(import ../../modules/desktop/xmonad/default.nix)] ++
-    [(import ../../modules/desktop/virtualisation/docker.nix)];
+  imports = [
+    (import ./hardware-configuration.nix)
+  ]
+  ++ [ (import ../../modules/desktop/xmonad/default.nix) ]
+  ++ [ (import ../../modules/desktop/hyprland/default.nix) ]
+  ++ [ (import ../../modules/desktop/virtualisation/docker.nix) ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
-    
+
     initrd.kernelModules = [ "amdgpu" ];
 
-    loader = {                                  # For legacy boot:
+    loader = {
+      # For legacy boot:
       systemd-boot = {
         enable = true;
-        configurationLimit = 5;                 # Limit the amount of configurations
+        configurationLimit = 5; # Limit the amount of configurations
       };
       efi.canTouchEfiVariables = true;
-      timeout = 1;                              # Grub auto select time
+      timeout = 1; # Grub auto select time
     };
   };
 
   # swapDevices = [{
-    # device = "/swapfile";
-    # size = 32 * 1024; # 16GB
+  # device = "/swapfile";
+  # size = 32 * 1024; # 16GB
   # }];
 
   networking = {
@@ -35,8 +41,11 @@
     };
 
     firewall.enable = true;
-    firewall.interfaces.wlp3s0.allowedTCPPorts = [ 4000 3001 ];
-    firewall.trustedInterfaces = ["wlp3s0"];
+    firewall.interfaces.wlp3s0.allowedTCPPorts = [
+      4000
+      3001
+    ];
+    firewall.trustedInterfaces = [ "wlp3s0" ];
   };
 
   hardware = {
@@ -87,7 +96,11 @@
       enable = true;
       package = pkgs.postgresql_15;
       # extraPlugins = with pkgs.postgresql_15.pkgs; [ postgis ];
-      extensions = with pkgs.postgresql_15.pkgs; [ postgis timescaledb pgvector];
+      extensions = with pkgs.postgresql_15.pkgs; [
+        postgis
+        timescaledb
+        pgvector
+      ];
       settings.shared_preload_libraries = "timescaledb";
       authentication = pkgs.lib.mkOverride 10 ''
         local all all trust
@@ -96,7 +109,6 @@
       '';
     };
 
-    
     redis.servers.cocoach.enable = true;
     # redis.servers.cocoach.user = "admin";
 
@@ -109,10 +121,10 @@
       };
     };
 
-    # udev.packages = with pkgs; [ 
-      # ledger-udev-rules
-      # trezor-udev-rules
-      # potentially even more if you need them
-    # ];  
+    # udev.packages = with pkgs; [
+    # ledger-udev-rules
+    # trezor-udev-rules
+    # potentially even more if you need them
+    # ];
   };
 }

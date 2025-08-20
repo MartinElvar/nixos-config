@@ -1,11 +1,12 @@
-{ config, lib, pkgs, user, fetchpatch, ... }:
+{
+  pkgs,
+  user,
+  ...
+}:
 
 {
   imports =
-    (import ../modules/editors) ++
-    (import ../modules/programs) ++
-    (import ../modules/services);
-
+    (import ../modules/editors) ++ (import ../modules/programs) ++ (import ../modules/services);
 
   home = {
     username = "${user}";
@@ -43,7 +44,7 @@
       signal-desktop
       helix
       helix-gpt
-      kdePackages.filelight      
+      kdePackages.filelight
 
       # File management
       unzip
@@ -63,6 +64,11 @@
       kdePackages.kcalc
       networkmanagerapplet
       networkmanager-openvpn
+      fzf
+      clipse # clipboard manager
+      eza # Better ls
+      zoxide # Better cd
+      fd # Better find
 
       # Xorg
       xclip
@@ -91,7 +97,7 @@
 
   programs = {
     home-manager.enable = true;
-  #   autorandr.enable = true;
+    #   autorandr.enable = true;
   };
 
   services = {
@@ -99,7 +105,8 @@
     caffeine.enable = true;
   };
 
-  gtk = {                                     # Theming
+  gtk = {
+    # Theming
     enable = true;
     theme = {
       name = "Dracula";
@@ -112,7 +119,7 @@
       package = pkgs.papirus-icon-theme;
     };
     font = {
-      name = "JetBrains Mono Medium";         # or FiraCode Nerd Font Mono Medium
-    };                                        # Cursor is declared under home.pointerCursor
+      name = "JetBrains Mono Medium"; # or FiraCode Nerd Font Mono Medium
+    }; # Cursor is declared under home.pointerCursor
   };
 }

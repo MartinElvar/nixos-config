@@ -1,0 +1,29 @@
+{
+  ...
+}:
+{
+  wayland.windowManager.hyprland.settings = {
+    # Environment variables
+    # https://wiki.hyprland.org/Configuring/Variables/#input
+    input = {
+      kb_layout = "us";
+      kb_variant = "mac";
+      # kb_model =
+      kb_options = "caps:super";
+      # kb_rules =
+
+      follow_mouse = 1;
+
+      sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+
+      touchpad = {
+        natural_scroll = false;
+      };
+    };
+
+    # https://wiki.hyprland.org/Configuring/Variables/#gestures
+    gestures = {
+      workspace_swipe = false;
+    };
+  };
+}
