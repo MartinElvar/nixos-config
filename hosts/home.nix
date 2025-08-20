@@ -85,13 +85,6 @@
       ffmpeg
     ];
 
-    pointerCursor = {
-      #name = "Dracula-cursors";
-      name = "Catppuccin-Mocha-Dark-Cursors";
-      #package = pkgs.dracula-theme;
-      package = pkgs.catppuccin-cursors.mochaDark;
-      size = 16;
-    };
     stateVersion = "22.05";
   };
 
@@ -103,23 +96,5 @@
   services = {
     betterlockscreen.enable = true;
     caffeine.enable = true;
-  };
-
-  gtk = {
-    # Theming
-    enable = true;
-    theme = {
-      name = "Dracula";
-      #name = "Catppuccin-Dark";
-      package = pkgs.dracula-theme;
-      #package = pkgs.catppuccin-gtk;
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    font = {
-      name = "JetBrains Mono Medium"; # or FiraCode Nerd Font Mono Medium
-    }; # Cursor is declared under home.pointerCursor
   };
 }

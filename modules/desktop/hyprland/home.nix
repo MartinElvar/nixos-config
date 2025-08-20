@@ -16,9 +16,11 @@
 
     ./waybar.nix
     ./hypridle.nix
+    ./mako.nix
+    ./wofi.nix
   ];
 
-  colorScheme = nix-colors.colorSchema.catppuccin-mocha;
+  colorScheme = nix-colors.colorSchemes.catppuccin-mocha;
 
   wayland.windowManager.hyprland.settings = {
     # Default applications

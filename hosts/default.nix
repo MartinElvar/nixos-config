@@ -36,7 +36,7 @@ in
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit user; };
+        home-manager.extraSpecialArgs = { inherit user nix-colors; };
         home-manager.users.${user} = {
           imports = [
             (import ./home.nix)
