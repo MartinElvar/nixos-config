@@ -1,13 +1,11 @@
-inputs:
 {
   config,
-  pkgs,
-  lib,
+  nix-colors,
   ...
 }:
 let
   palette = config.colorScheme.palette;
-  convert = inputs.nix-colors.lib.conversions.hexToRGBString;
+  convert = nix-colors.lib.conversions.hexToRGBString;
   wallpaper_path = "~/wallpapers/comfy_waves.jpg";
 
   surfaceRgb = "rgb(${convert ", " palette.base02})";

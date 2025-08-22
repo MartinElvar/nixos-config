@@ -43,7 +43,6 @@
       pinta
       signal-desktop
       helix
-      helix-gpt
       kdePackages.filelight
 
       # File management
