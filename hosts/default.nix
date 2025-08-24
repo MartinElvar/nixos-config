@@ -39,10 +39,8 @@ in
         home-manager.extraSpecialArgs = { inherit user nix-colors; };
         home-manager.users.${user} = {
           imports = [
-            (import ./home.nix)
-          ]
-          ++ [
-            (import ./thinkpad/home.nix)
+            ./home.nix
+            ./thinkpad/home.nix
           ];
         };
       }

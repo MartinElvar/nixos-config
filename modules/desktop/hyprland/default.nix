@@ -25,6 +25,8 @@
     unzip
     curl
     fastfetch
+    kanshi
+    wl-clipboard
 
     hyprshot
     hyprpicker
@@ -34,6 +36,7 @@
     playerctl
     gnome-themes-extra
     pavucontrol
+    nwg-displays
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

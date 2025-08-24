@@ -10,19 +10,21 @@
       "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"";
 
     bind = [
-      "$mod, Q, Close active window, killactive,"
-      "ALT, Tab, Cycle to next window, cyclenext"
-      "ALT, Tab, Reveal active window on top, bringactivetotop"
+      "SUPER, space, exec, wofi --show drun --sort-order=alphabetical"
+
+      "$mod, Q, killactive,"
+      "ALT, Tab, cyclenext"
+      "ALT, Tab, bringactivetotop"
 
       # Resize active window
-      "$mod, minus, Expand window left, resizeactive, -100 0"
-      "$mod, equal, Shrink window left, resizeactive, 100 0"
-      "$mod SHIFT, minus, Shrink window up, resizeactive, 0 -100"
-      "$mod SHIFT, equal, Expand window down, resizeactive, 0 100"
+      "$mod, minus, resizeactive, -100 0"
+      "$mod, equal, resizeactive, 100 0"
+      "$mod SHIFT, minus, resizeactive, 0 -100"
+      "$mod SHIFT, equal, resizeactive, 0 100"
 
       # Scroll through existing workspaces with SUPER + scroll
-      "$mod, mouse_down, Scroll active workspace forward, workspace, e+1"
-      "$mod, mouse_up, Scroll active workspace backward, workspace, e-1"
+      "$mod, mouse_down, workspace, e+1"
+      "$mod, mouse_up, workspace, e-1"
 
       # Apps
       "SUPER, A, exec, $webapp=https://chatgpt.com"
@@ -60,8 +62,8 @@
 
     bindm = [
       # Move/resize windows with mainMod + LMB/RMB and dragging
-      "$mod, mouse:272, Move window, movewindow"
-      "$mod, mouse:273, Resize window, resizewindow"
+      "$mod, mouse:272, movewindow"
+      "$mod, mouse:273, resizewindow"
     ];
 
     bindld = [

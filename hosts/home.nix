@@ -9,8 +9,8 @@
     (import ../modules/editors) ++ (import ../modules/programs) ++ (import ../modules/services);
 
   home = {
-    username = "${user}";
-    homeDirectory = "/home/${user}";
+    # username = "${user}";
+    # homeDirectory = "/home/${user}";
     sessionPath = [
       "/home/saturn/.mix/escripts"
     ];

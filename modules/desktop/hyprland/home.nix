@@ -18,9 +18,12 @@
     ./hypridle.nix
     ./mako.nix
     ./wofi.nix
+    ./kanshi.nix
   ];
 
   colorScheme = nix-colors.colorSchemes.catppuccin-mocha;
+
+  wayland.windowManager.hyprland.enable = true; # enable Hyprland
 
   wayland.windowManager.hyprland.settings = {
     # Default applications
@@ -31,7 +34,7 @@
     "$messenger" = "signal-desktop";
     "$webapp" = "$browser --app";
 
-    # monitor = cfg.monitors;
+    #monitor = "eDP-1,1920x1080@60.03,0x0,1.0";
   };
 
   home.pointerCursor = {
