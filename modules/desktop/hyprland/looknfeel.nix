@@ -5,25 +5,23 @@
 let
   hexToRgba = hex: alpha: "rgba(${hex}${alpha})";
 
-  inactiveBorder = hexToRgba config.colorScheme.palette.base09 "aa";
-  activeBorder = hexToRgba config.colorScheme.palette.base0D "aa";
+  activeBorder = hexToRgba config.colorScheme.palette.base08 "aa";
+
 in
 {
   wayland.windowManager.hyprland.settings = {
     general = {
       gaps_in = 5;
-      gaps_out = 10;
-
-      border_size = 2;
+      gaps_out = 5;
+      border_size = 3;
 
       "col.active_border" = activeBorder;
-      "col.inactive_border" = inactiveBorder;
 
       resize_on_border = false;
 
       allow_tearing = false;
 
-      layout = "dwindle";
+      layout = "master";
     };
 
     decoration = {
@@ -41,7 +39,6 @@ in
         enabled = true;
         size = 5;
         passes = 2;
-
         vibrancy = 0.1696;
       };
     };
@@ -75,14 +72,12 @@ in
       ];
     };
 
-    dwindle = {
-      pseudotile = true;
-      preserve_split = true;
-      force_split = 2;
-    };
-
     master = {
-      new_status = "master";
+      orientation = "center"; # master in the middle
+      mfact = 0.7; # 50% width for master
+      allow_small_split = true;
+      slave_count_for_center_master = 2;
+      new_on_top = true;
     };
 
     misc = {

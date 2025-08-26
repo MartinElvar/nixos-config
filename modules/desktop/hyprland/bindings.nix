@@ -4,27 +4,36 @@
 
 {
   wayland.windowManager.hyprland.settings = {
-    "$mod" = "SUPER";
-    # Only display the OSD on the currently focused monitor
-    "$osdclient" =
-      "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"";
-
     bind = [
-      "SUPER, space, exec, wofi --show drun --sort-order=alphabetical"
+      "SUPER, r, exec, wofi --show drun --sort-order=alphabetical"
+      "SUPER SHIFT, SPACE, exec, pkill -SIGUSR1 waybar"
 
-      "$mod, Q, killactive,"
+      "SUPER, ESCAPE, exec, hyprlock"
+      "SUPER SHIFT, ESCAPE, exit,"
+      "SUPER CTRL, ESCAPE, exec, reboot"
+      "SUPER SHIFT CTRL, ESCAPE, exec, systemctl poweroff"
+
+      "SUPER, Q, killactive,"
       "ALT, Tab, cyclenext"
       "ALT, Tab, bringactivetotop"
 
-      # Resize active window
-      "$mod, minus, resizeactive, -100 0"
-      "$mod, equal, resizeactive, 100 0"
-      "$mod SHIFT, minus, resizeactive, 0 -100"
-      "$mod SHIFT, equal, resizeactive, 0 100"
+      # Navigation
+      "SUPER, h, movefocus, l"
+      "SUPER, l, movefocus, r"
+      "SUPER, j, movefocus, u"
+      "SUPER, k, movefocus, d"
+
+      # Layout
+      "SUPER, Backspace, layoutmsg, swapwithmaster master"
+      "SUPER, SPACE, layoutmsg, orientationcycle, left center right"
+
+      "SUPER, minus, resizeactive, -100 0"
+      "SUPER, equal, resizeactive, 100 0"
+      "SUPER, Tab, fullscreen"
 
       # Scroll through existing workspaces with SUPER + scroll
-      "$mod, mouse_down, workspace, e+1"
-      "$mod, mouse_up, workspace, e-1"
+      "SUPER, mouse_down, workspace, e+1"
+      "SUPER, mouse_up, workspace, e-1"
 
       # Apps
       "SUPER, A, exec, $webapp=https://chatgpt.com"
@@ -42,10 +51,25 @@
       "SUPER, T, exec, $terminal -e btop"
       "SUPER, G, exec, $messenger"
       "SUPER, O, exec, obsidian -disable-gpu"
+
+      # Super workspace floating layer
+      "SUPER, S, togglespecialworkspace, magic"
+      "SUPER SHIFT, S, movetoworkspace, special:magic"
+
+      # Screenshots
+      ", PRINT, exec, hyprshot -m region"
+      "SHIFT, PRINT, exec, hyprshot -m window"
+      "CTRL, PRINT, exec, hyprshot -m output"
+
+      # Color picker
+      "SUPER, PRINT, exec, hyprpicker -a"
+
+      # Clipse
+      "CTRL SUPER, V, exec, alacritty --class clipse -e clipse"
     ]
     ++ (
       # workspaces
-      # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+      # binds SUPER + [shift +] {1..9} to [move to] workspace {1..9}
       builtins.concatLists (
         builtins.genList (
           i:
@@ -53,8 +77,8 @@
             ws = i + 1;
           in
           [
-            "$mod, code:1${toString i}, workspace, ${toString ws}"
-            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            "SUPER, code:1${toString i}, workspace, ${toString ws}"
+            "SUPER SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
           ]
         ) 9
       )
@@ -62,26 +86,26 @@
 
     bindm = [
       # Move/resize windows with mainMod + LMB/RMB and dragging
-      "$mod, mouse:272, movewindow"
-      "$mod, mouse:273, resizewindow"
+      "SUPER, mouse:272, movewindow"
+      "SUPER, mouse:273, resizewindow"
     ];
 
-    bindld = [
+    bindl = [
       # Requires playerctl
-      ", XF86AudioNext, Next track, exec, $osdclient --playerctl next"
-      ", XF86AudioPause, Pause, exec, $osdclient --playerctl play-pause"
-      ", XF86AudioPlay, Play, exec, $osdclient --playerctl play-pause"
-      ", XF86AudioPrev, Previous track, exec, $osdclient --playerctl previous"
+      ", XF86AudioNext, exec, playerctl next"
+      ", XF86AudioPause, exec, playerctl play-pause"
+      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioPrev, exec, playerctl previous"
     ];
 
-    bindeld = [
+    bindel = [
       # Laptop multimedia keys for volume and LCD brightness (with OSD)
-      ",XF86AudioRaiseVolume, Volume up, exec, $osdclient --output-volume raise"
-      ",XF86AudioLowerVolume, Volume down, exec, $osdclient --output-volume lower"
-      ",XF86AudioMute, Mute, exec, $osdclient --output-volume mute-toggle"
-      ",XF86MonBrightnessUp, Brightness up, exec, $osdclient --brightness raise"
-      ",XF86MonBrightnessUp, Brightness up, exec, $osdclient --brightness raise"
-      ",XF86MonBrightnessDown, Brightness down, exec, $osdclient --brightness lower"
+      ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+      ", XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
+      ", XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
     ];
   };
 }

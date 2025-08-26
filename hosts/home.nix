@@ -93,7 +93,6 @@
   };
 
   services = {
-    betterlockscreen.enable = true;
     caffeine.enable = true;
   };
 }

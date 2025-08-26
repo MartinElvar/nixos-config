@@ -9,12 +9,12 @@
       home_office = {
         outputs = [
           {
-            criteria = "Samsung Electric Company SE790C";
+            criteria = "Samsung *";
             position = "0,0";
-            mode = "3440x1440@60Hz";
+            mode = "3440x1440@59.99Hz";
           }
           {
-            criteria = "Lenovo Group Limited 0x40A9";
+            criteria = "eDP-1";
             status = "disable";
           }
         ];
@@ -26,7 +26,7 @@
             criteria = "eDP-1";
             scale = 1.0;
             mode = "1920x1080@60.03Hz";
-            # status = "enable";
+            status = "enable";
           }
         ];
       };

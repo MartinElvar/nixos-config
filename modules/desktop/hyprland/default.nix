@@ -20,6 +20,7 @@
     kitty
     swayosd
     ripgrep
+    jq
     gnumake
     wget
     unzip
@@ -44,7 +45,8 @@
   # Initial login experience
   services.greetd = {
     enable = true;
-    settings.default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+    settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd hyprland";
+    settings.default_session.user = "saturn";
   };
 
   fonts.packages = with pkgs; [

@@ -13,9 +13,11 @@
     ./input.nix
     ./looknfeel.nix
     ./windows.nix
-
     ./waybar.nix
     ./hypridle.nix
+    ./hyprlock.nix
+    ./hyprpaper.nix
+    ./hyprpanel.nix
     ./mako.nix
     ./wofi.nix
     ./kanshi.nix

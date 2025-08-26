@@ -1,16 +1,24 @@
-{ config, lib, pkgs, inputs, user, location, fetchpatch, ... }:
+{
+  pkgs,
+  inputs,
+  user,
+  ...
+}:
 
 {
-  imports =
-    (import ../modules/shell);
+  imports = (import ../modules/shell);
 
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" "kvm"];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "libvirtd"
+      "kvm"
+    ];
     shell = pkgs.zsh;
   };
   security.sudo.wheelNeedsPassword = false;
-  security.pam.services.betterlockscreen.enable = true;
   security.pam.services.i3lock.enable = true;
 
   time.timeZone = "Europe/Copenhagen";
@@ -27,9 +35,10 @@
   };
 
   security.rtkit.enable = true;
-  fonts.packages = with pkgs; [                # Fonts
-    carlito                                 # NixOS
-    vegur                                   # NixOS
+  fonts.packages = with pkgs; [
+    # Fonts
+    carlito # NixOS
+    vegur # NixOS
 
     dejavu_fonts
     freefont_ttf
@@ -39,8 +48,8 @@
     noto-fonts-emoji
     source-code-pro
     jetbrains-mono
-    font-awesome                            # Icons
-    corefonts                               # MS
+    font-awesome # Icons
+    corefonts # MS
     nerd-fonts.fira-code
     noto-fonts-emoji
     noto-fonts-cjk-sans
@@ -62,34 +71,38 @@
       EDITOR = "nvim";
       VISUAL = "nvim";
     };
-    systemPackages = with pkgs;
+    systemPackages =
+      with pkgs;
       let
-      my-nvim = inputs.nvim.packages.${system}.default;
-      in [           # Default packages install system-wide
-      nix-index
-      vim
-      my-nvim
-      emacs
-      ripgrep
-      coreutils
-      fd
-      git
-      killall
-      nano
-      pciutils
-      usbutils
-      wget
-      rsync
-      usbutils
-      pipewire
-      xclip
-      gcc
-      autorandr
-    ];
+        my-nvim = inputs.nvim.packages.${system}.default;
+      in
+      [
+        # Default packages install system-wide
+        nix-index
+        vim
+        my-nvim
+        emacs
+        ripgrep
+        coreutils
+        fd
+        git
+        killall
+        nano
+        pciutils
+        usbutils
+        wget
+        rsync
+        usbutils
+        pipewire
+        xclip
+        gcc
+        autorandr
+      ];
   };
 
   services = {
-    pipewire = {                            # Sound
+    pipewire = {
+      # Sound
       enable = true;
       alsa = {
         enable = true;
@@ -105,15 +118,15 @@
     udev.enable = true;
     udev.extraRules = ''ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.autorandr}/bin/autorandr -c"'';
 
-      # Printer
+    # Printer
     printing.browsing = true;
     printing.browsedConf = ''
-    BrowseDNSSDSubTypes _cups,_print
-    BrowseLocalProtocols all
-    BrowseRemoteProtocols all
-    CreateIPPPrinterQueues All
+      BrowseDNSSDSubTypes _cups,_print
+      BrowseLocalProtocols all
+      BrowseRemoteProtocols all
+      CreateIPPPrinterQueues All
 
-    BrowseProtocols all
+      BrowseProtocols all
     '';
 
     avahi = {
@@ -121,8 +134,6 @@
       nssmdns = true;
     };
   };
-
-  
 
   # programs.ssh.startAgent = true;
   programs = {
@@ -132,17 +143,22 @@
     };
   };
 
-  nix = {                                   # Nix Package Manager settings
-    settings ={
-      auto-optimise-store = true;           # Optimise syslinks
-      trusted-users = ["root" "saturn"];
+  nix = {
+    # Nix Package Manager settings
+    settings = {
+      auto-optimise-store = true; # Optimise syslinks
+      trusted-users = [
+        "root"
+        "saturn"
+      ];
     };
-    gc = {                                  # Automatic garbage collection
+    gc = {
+      # Automatic garbage collection
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 2d";
     };
-    package = pkgs.nixVersions.latest;    # Enable nixFlakes on system
+    package = pkgs.nixVersions.latest; # Enable nixFlakes on system
     registry.nixpkgs.flake = inputs.nixpkgs;
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -152,8 +168,10 @@
   };
   nixpkgs.config.allowUnfree = true;
 
-  system = {                                # NixOS settings
-    autoUpgrade = {                         # Allow auto update (not useful in flakes)
+  system = {
+    # NixOS settings
+    autoUpgrade = {
+      # Allow auto update (not useful in flakes)
       enable = true;
       channel = "https://nixos.org/channels/nixos-unstable";
     };

@@ -8,12 +8,12 @@
       text = ''
         * {
           font-family: 'CaskaydiaMono Nerd Font', monospace;
-          font-size: 18px;
+          font-size: 14px;
         }
 
         window {
           margin: 0px;
-          padding: 20px;
+          padding: 10px;
           background-color: #${config.colorScheme.palette.base00};
           opacity: 0.95;
         }
@@ -69,7 +69,7 @@
         }
 
         #entry:selected #text {
-          color: #${config.colorScheme.palette.base02};
+          color: #${config.colorScheme.palette.base04};
         }
 
         #entry image {
@@ -95,7 +95,7 @@
       content_halign = "fill";
       insensitive = true;
       allow_images = true;
-      image_size = 40;
+      image_size = 30;
       gtk_dark = true;
     };
   };

@@ -18,6 +18,11 @@
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on && brightnessctl -r";
         }
+        {
+          timeout = 295;
+          on-timeout = "killall waybar";
+          on-resume = "exec waybar";
+        }
       ];
     };
   };
