@@ -34,6 +34,9 @@
     let
       user = "saturn";
       location = "$HOME/.setup";
+      overlays = [
+        (import ./overlays/elixir-ls.nix)
+      ];
     in
     {
       nixosConfigurations = (
@@ -43,6 +46,7 @@
             inputs
             self
             nixpkgs
+            overlays
             home-manager
             nix-colors
             user

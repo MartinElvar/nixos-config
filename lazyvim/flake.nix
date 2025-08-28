@@ -108,8 +108,8 @@
               fd
               stdenv.cc.cc
               lua-language-server
-              beamMinimal28Packages.elixir-ls
-              nil # I would go for nixd but lazy chooses this one idk
+              # beamMinimal28Packages.elixir-ls
+              nil # Nix LS
               marksman # Markdown LS
               vscode-langservers-extracted # JSON LS
 

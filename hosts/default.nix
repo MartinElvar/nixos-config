@@ -1,6 +1,7 @@
 {
   inputs,
   nixpkgs,
+  overlays,
   home-manager,
   nix-colors,
   user,
