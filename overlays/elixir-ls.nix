@@ -10,6 +10,9 @@ self: super: with super; {
         rev = "v0.29.e"; # CHANGE to the tag you want
         sha256 = "1jwy188p95f8q75midqf0zbvzgdi93xnri3k64llbbj3v5lp8k4a";
       };
+      patches = [
+        ./launch.sh.patch
+      ];
     });
   };
 }

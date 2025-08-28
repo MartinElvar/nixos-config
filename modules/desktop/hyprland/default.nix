@@ -28,6 +28,7 @@
     fastfetch
     kanshi
     wl-clipboard
+    uwsm
 
     hyprshot
     hyprpicker

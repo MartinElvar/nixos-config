@@ -12,7 +12,7 @@
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
-    inherit system;
+    inherit system overlays;
     config.allowUnfree = true;
   };
 
@@ -35,6 +35,7 @@ in
 
       home-manager.nixosModules.home-manager
       {
+        nixpkgs.overlays = overlays;
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = { inherit user inputs nix-colors; };

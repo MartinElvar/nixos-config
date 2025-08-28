@@ -7,7 +7,7 @@
         lock_cmd = "pidof hyprlock || hyprlock";
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "hyprctl dispatch dpms on";
-        on_unlock_cmd = "killall waybar || true && setsid uwsm app -- waybar &>/dev/null &";
+        on_unlock_cmd = "killall .waybar-wrapped || true && setsid uwsm app -- waybar &>/dev/null &";
       };
       listener = [
         {

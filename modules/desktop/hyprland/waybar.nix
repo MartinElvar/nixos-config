@@ -41,7 +41,8 @@ in
           "hyprland/workspaces"
         ];
         modules-center = [
-          "clock"
+          "clock#date"
+          "clock#time"
         ];
         modules-right = [
           "tray"
@@ -49,6 +50,8 @@ in
           "network"
           "wireplumber"
           "cpu"
+          "temperature"
+          "memory"
           "power-profiles-daemon"
           "battery"
         ];
@@ -78,13 +81,36 @@ in
         };
         cpu = {
           interval = 5;
-          format = "󰍛";
+          format = "󰍛 {usage}%";
+          format-warning = "󰀨 {usage}%";
+          format-critical = "󰀨 {usage}%";
+          states = {
+            warning = 75;
+            critical = 90;
+          };
           on-click = "alacritty -e btop";
         };
-        clock = {
-          format = "{:%A %I:%M %p}";
-          format-alt = "{:%d %B W%V %Y}";
+        "clock#time" = {
+          format = "{:%a %H:%M}";
           tooltip = false;
+        };
+        "clock#date" = {
+          "format" = "󰸗 {:%d-%m}";
+          tooltip-format = "{calendar}";
+          calendar = {
+            mode = "month";
+            mode-mon-col = 6;
+            format = {
+              months = "<span alpha='100%'><b>{}</b></span>";
+              days = "<span alpha='90%'>{}</span>";
+              # weeks
+              weekdays = "<span alpha='80%'><i>{}</i></span>";
+              today = "<span alpha='100%'><b><u>{}</u></b></span>";
+            };
+          };
+          actions = {
+            on-click = "mode";
+          };
         };
         network = {
           format-icons = [
@@ -106,11 +132,10 @@ in
           on-click = "alacritty -e nmcli";
         };
         battery = {
-          interval = 5;
-          format = "{capacity}% {icon}";
-          format-discharging = "{icon}";
-          format-charging = "{icon}";
-          format-plugged = "";
+          format = "{icon} {capacity}% ";
+          format-time = "{H} h {M} m";
+          format-discharging = "{icon} {capacity}% ";
+          format-charging = "󰉁 {capacity}% ";
           format-icons = {
             charging = [
               "󰢜"
@@ -138,8 +163,8 @@ in
             ];
           };
           format-full = "Charged ";
-          tooltip-format-discharging = "{power:>1.0f}W↓ {capacity}%";
-          tooltip-format-charging = "{power:>1.0f}W↑ {capacity}%";
+          tooltip-format-discharging = "{power:>1.0f}W↓ {capacity}% - {time}";
+          tooltip-format-charging = "{power:>1.0f}W↑ {capacity}% - {time}";
           states = {
             warning = 20;
             critical = 10;
@@ -165,6 +190,20 @@ in
         tray = {
           spacing = 13;
         };
+        temperature = {
+          thermal-zone = 1;
+          critical-threshold = 90;
+          interval = 10;
+          format-critical = "󰀦 {temperatureC}°C";
+          format = "{icon} {temperatureC}°C";
+          format-icons = [
+            "󱃃"
+            "󰔏"
+            "󱃂"
+          ];
+          min-length = 8;
+          max-length = 8;
+        };
         power-profiles-daemon = {
           format = "{icon}";
           tooltip-format = "Power profile: {profile}";
@@ -174,6 +213,17 @@ in
             balanced = "󰊚";
             performance = "󰡴";
           };
+        };
+        memory = {
+          interval = 10;
+          format = "󰘚 {percentage}% ";
+          format-warning = "󰀧 {percentage}% ";
+          format-critical = "󰀧 {percentage}% ";
+          states = {
+            warning = 75;
+            critical = 90;
+          };
+          tooltip-format = "Memory Used: {used:0.1f} GB / {total:0.1f} GB";
         };
       }
     ];
