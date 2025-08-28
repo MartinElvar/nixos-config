@@ -54,7 +54,6 @@
 
       # General
       alacritty
-      dunst
       libnotify # Dunst dep
       rofi
       rofi-power-menu
@@ -89,7 +88,6 @@
 
   programs = {
     home-manager.enable = true;
-    #   autorandr.enable = true;
   };
 
   services = {

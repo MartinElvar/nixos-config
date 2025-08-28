@@ -1,4 +1,4 @@
-{ pkgs, user, ... }:
+{ user, ... }:
 
 {
 
@@ -6,11 +6,13 @@
     flameshot = {
       enable = true;
       settings = {
-        General = {                               # Settings
+        General = {
+          # Settings
           savePath = "/home/${user}/screenshots";
           saveAsFileExtension = ".png";
           uiColor = "#2d0096";
           showHelp = "false";
+          useGrimAdapter = true;
         };
       };
     };

@@ -17,7 +17,6 @@
     ./hypridle.nix
     ./hyprlock.nix
     ./hyprpaper.nix
-    ./hyprpanel.nix
     ./mako.nix
     ./wofi.nix
     ./kanshi.nix
@@ -36,7 +35,12 @@
     "$messenger" = "signal-desktop";
     "$webapp" = "$browser --app";
 
-    #monitor = "eDP-1,1920x1080@60.03,0x0,1.0";
+    monitor = [
+      # Always set up the laptop panel
+      "eDP-1, preferred, 0x0, 1"
+      # Fallback for *any* other monitor you plug in (extend, auto place/size)
+      ", preferred, auto, 1"
+    ];
   };
 
   home.pointerCursor = {

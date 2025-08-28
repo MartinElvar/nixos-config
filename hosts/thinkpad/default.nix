@@ -84,11 +84,6 @@
     logind = {
       lidSwitch = "hybrid-sleep";
       lidSwitchDocked = "ignore";
-      extraConfig = ''
-        IdleAction=ignore
-        IdleActionSec=120min
-        HandlePowerKey=hybrid-sleep
-      '';
     };
 
     # Development.
@@ -108,9 +103,6 @@
         host all all ::1/128 trust
       '';
     };
-
-    redis.servers.cocoach.enable = true;
-    # redis.servers.cocoach.user = "admin";
 
     grafana = {
       enable = true;

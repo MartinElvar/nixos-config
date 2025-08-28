@@ -1,7 +1,8 @@
-{ ... }:
+{ inputs, pkgs, ... }:
 {
   programs.hyprpanel = {
     enable = true;
+    package = inputs.hyprpanel.packages.${pkgs.system}.default;
     # Configure and theme almost all options from the GUI.
     # See 'https://hyprpanel.com/configuration/settings.html'.
     # Default: <same as gui>
@@ -19,7 +20,6 @@
             ];
             middle = [
               "clock"
-              "weather"
             ];
             right = [
               "systray"

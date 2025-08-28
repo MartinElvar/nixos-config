@@ -33,10 +33,20 @@ require("nixCatsUtils.lazyCat").setup(nixCats.pawsible({ "allPlugins", "start", 
 		opts = {
 			-- nix already ensured they were installed, and we would need to change the parser_install_dir if we wanted to use it instead.
 			-- so we just disable install and do it via nix.
-			ensure_installed = require("nixCatsUtils").lazyAdd(
-				{ "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
-				false
-			),
+			ensure_installed = require("nixCatsUtils").lazyAdd({
+				"bash",
+				"c",
+				"diff",
+				"html",
+				"lua",
+				"luadoc",
+				"markdown",
+				"vim",
+				"vimdoc",
+				"elixir",
+				"eex",
+				"heex",
+			}, false),
 			auto_install = require("nixCatsUtils").lazyAdd(true, false),
 		},
 	},
@@ -48,18 +58,21 @@ require("nixCatsUtils.lazyCat").setup(nixCats.pawsible({ "allPlugins", "start", 
 			},
 		},
 	},
-	{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
-	{ import = "lazyvim.plugins.extras.lang.git" },
-	{ import = "lazyvim.plugins.extras.lang.json" },
+	-- { import = "lazyvim.plugins.extras.lang.git" },
+	-- { import = "lazyvim.plugins.extras.lang.json" },
+	-- { import = "lazyvim.plugins.extras.lang.nix" },
 	{ import = "lazyvim.plugins.extras.lang.markdown" },
-	{ import = "lazyvim.plugins.extras.lang.nix" },
 	{ import = "lazyvim.plugins.extras.lang.elixir" },
 	{ import = "lazyvim.plugins.extras.lang.tailwind" },
 	{ import = "lazyvim.plugins.extras.coding.mini-surround" },
+
 	-- import/override with your plugins
 	{ import = "plugins" },
 }, lazyOptions)
 
-require("lspconfig").elixirls.setup({
+local lspconfig = require("lspconfig")
+
+lspconfig.elixirls.setup({
 	cmd = { "elixir-ls" },
+	root_dir = lspconfig.util.root_pattern("mix.exs", ".git"),
 })

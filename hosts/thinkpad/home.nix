@@ -45,7 +45,6 @@
       gnumake
       beamMinimal28Packages.erlang
       beamMinimal28Packages.elixir_1_19
-      beamMinimal28Packages.elixir-ls
       vscode-langservers-extracted
       ghostscript
       devbox
@@ -53,11 +52,6 @@
       tesseract
       hoppscotch
       rustup
-
-      # CoCoach
-      zoom-us
-      redis
-      ngrok
     ];
   };
 
