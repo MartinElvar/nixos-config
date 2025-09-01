@@ -25,19 +25,19 @@
     wget
     unzip
     curl
-    fastfetch
     kanshi
     wl-clipboard
     uwsm
 
     hyprshot
     hyprpicker
-    hyprsunset
     brightnessctl
     pamixer
     playerctl
     gnome-themes-extra
     pavucontrol
+    xdg-desktop-portal
+    xdg-desktop-portal-hyprland
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

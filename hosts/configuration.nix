@@ -97,6 +97,7 @@
         xclip
         gcc
         autorandr
+        fprintd
       ];
   };
 
@@ -113,7 +114,6 @@
     };
     flatpak.enable = true;
     udisks2.enable = true;
-    autorandr.enable = true;
 
     udev.enable = true;
     udev.extraRules = ''ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.autorandr}/bin/autorandr -c"'';
@@ -128,11 +128,6 @@
 
       BrowseProtocols all
     '';
-
-    avahi = {
-      enable = true;
-      nssmdns = true;
-    };
   };
 
   # programs.ssh.startAgent = true;
@@ -152,12 +147,12 @@
         "saturn"
       ];
     };
-    gc = {
-      # Automatic garbage collection
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 2d";
-    };
+    # gc = {
+    #   # Automatic garbage collection
+    #   automatic = true;
+    #   dates = "weekly";
+    #   options = "--delete-older-than 2d";
+    # };
     package = pkgs.nixVersions.latest; # Enable nixFlakes on system
     registry.nixpkgs.flake = inputs.nixpkgs;
     extraOptions = ''

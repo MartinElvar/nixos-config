@@ -32,12 +32,16 @@
       pavucontrol
       vlc
       pnmixer
+      ksnip
 
       # Apps
       brave
       firefox
+      chromium
       slack
       spotify
+      thunderbird
+      discord
       obsidian
       libreoffice
       pinta
@@ -69,14 +73,15 @@
       fd # Better find
 
       # Xorg
-      xclip
-      xorg.xev
-      xorg.xkill
-      xorg.xrandr
-      arandr
-      xterm
+      # xclip
+      # xorg.xev
+      # xorg.xkill
+      # xorg.xrandr
+      # arandr
+      # xterm
+      #
+      (flameshot.override { enableWlrSupport = true; })
 
-      flameshot
       caffeine-ng
 
       # Desktop

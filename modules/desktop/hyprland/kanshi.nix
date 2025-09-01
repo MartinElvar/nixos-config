@@ -5,9 +5,10 @@
     enable = true;
     systemdTarget = "hyprland-session.target";
 
-    profiles = {
-      home_office = {
-        outputs = [
+    settings = [
+      {
+        profile.name = "home_office";
+        profile.outputs = [
           {
             criteria = "Samsung *";
             position = "0,0";
@@ -18,10 +19,10 @@
             status = "disable";
           }
         ];
-      };
-
-      undocked = {
-        outputs = [
+      }
+      {
+        profile.name = "undocked";
+        profile.outputs = [
           {
             criteria = "eDP-1";
             scale = 1.0;
@@ -29,7 +30,7 @@
             status = "enable";
           }
         ];
-      };
-    };
+      }
+    ];
   };
 }

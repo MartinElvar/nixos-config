@@ -7,7 +7,6 @@
   imports = [
     (import ./hardware-configuration.nix)
   ]
-    # ++ [ (import ../../modules/desktop/xmonad/default.nix) ]
   ++ [ (import ../../modules/desktop/hyprland/default.nix) ]
   ++ [ (import ../../modules/desktop/virtualisation/docker.nix) ];
 
@@ -34,7 +33,7 @@
   # }];
 
   networking = {
-    hostName = "Saturn-nixos";
+    hostName = "Mars-nixos";
     networkmanager = {
       enable = true;
       # plugins = [pkgs.networkmanager-openvpn];
@@ -89,9 +88,9 @@
     # Development.
     postgresql = {
       enable = true;
-      package = pkgs.postgresql_15;
+      package = pkgs.postgresql_18;
       # extraPlugins = with pkgs.postgresql_15.pkgs; [ postgis ];
-      extensions = with pkgs.postgresql_15.pkgs; [
+      extensions = with pkgs.postgresql_18.pkgs; [
         postgis
         timescaledb
         pgvector

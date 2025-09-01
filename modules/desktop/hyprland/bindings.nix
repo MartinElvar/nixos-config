@@ -25,11 +25,11 @@
 
       # Layout
       "SUPER, Backspace, layoutmsg, swapwithmaster master"
-      "SUPER, SPACE, layoutmsg, orientationcycle, left center right"
+      "SUPER, SPACE, layoutmsg, orientationcycle left center right"
 
       "SUPER, minus, resizeactive, -100 0"
       "SUPER, equal, resizeactive, 100 0"
-      "SUPER, Tab, fullscreen"
+      "SUPER, Tab, fullscreenstate, 2 0"
 
       # Scroll through existing workspaces with SUPER + scroll
       "SUPER, mouse_down, workspace, e+1"
@@ -65,7 +65,7 @@
       "SUPER, PRINT, exec, hyprpicker -a"
 
       # Clipse
-      "CTRL SUPER, V, exec, alacritty --class clipse -e clipse"
+      "CTRL ALT, V, exec, alacritty --class clipse -e clipse"
     ]
     ++ (
       # workspaces
@@ -83,6 +83,10 @@
         ) 9
       )
     );
+
+    bindc = [
+
+    ];
 
     bindm = [
       # Move/resize windows with mainMod + LMB/RMB and dragging
