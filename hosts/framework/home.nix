@@ -2,7 +2,6 @@
 
 {
   imports = [
-    # ../../modules/desktop/xmonad/home.nix
     ../../modules/desktop/hyprland/home.nix
   ];
 
@@ -24,7 +23,6 @@
       vscode
       flyctl
       inotify-tools
-      postgresql
       wxGTK32
       ncurses
       m4
@@ -42,7 +40,6 @@
       poppler_utils
       tesseract
       hoppscotch
-      rustup
     ];
   };
 

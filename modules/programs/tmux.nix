@@ -7,20 +7,24 @@
     baseIndex = 1;
     shortcut = "Space";
     extraConfig = ''
-    unbind r
-    bind r source-file ~/.tmux.conf
+      unbind r
+      bind r source-file ~/.tmux.conf
 
-    bind-key h select-pane -L
-    bind-key l select-pane -R
-    bind-key j select-pane -D
-    bind-key k select-pane -U
+      bind-key h select-pane -L
+      bind-key l select-pane -R
+      bind-key j select-pane -D
+      bind-key k select-pane -U
+
+      bind-key v split-window -h
+      bind-key s split-window -v
+
     '';
     plugins = with pkgs; [
       tmuxPlugins.sensible
       tmuxPlugins.yank
       tmuxPlugins.fingers
       tmuxPlugins.vim-tmux-navigator
-      tmuxPlugins.cpu
+      tmuxPlugins.tmux-which-key
       {
         plugin = tmuxPlugins.catppuccin;
         extraConfig = ''

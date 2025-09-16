@@ -5,9 +5,10 @@
 
 {
   imports = [
+    ../../modules/services/fprintd.nix
     (import ./hardware-configuration.nix)
   ]
-    # ++ [ (import ../../modules/desktop/xmonad/default.nix) ]
+  # ++ [ (import ../../modules/desktop/xmonad/default.nix) ]
   ++ [ (import ../../modules/desktop/hyprland/default.nix) ]
   ++ [ (import ../../modules/desktop/virtualisation/docker.nix) ];
 

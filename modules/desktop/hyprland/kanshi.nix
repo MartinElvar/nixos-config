@@ -21,6 +21,20 @@
         ];
       }
       {
+        profile.name = "leaf";
+        profile.outputs = [
+          {
+            criteria = "Microstep *";
+            position = "0,0";
+            mode = "3440x1440@60.00Hz";
+          }
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+        ];
+      }
+      {
         profile.name = "undocked";
         profile.outputs = [
           {

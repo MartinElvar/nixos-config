@@ -71,6 +71,7 @@
       eza # Better ls
       zoxide # Better cd
       fd # Better find
+      lm_sensors
 
       # Xorg
       # xclip
@@ -80,7 +81,7 @@
       # arandr
       # xterm
       #
-      (flameshot.override { enableWlrSupport = true; })
+      flameshot
 
       caffeine-ng
 
