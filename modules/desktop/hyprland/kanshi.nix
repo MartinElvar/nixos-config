@@ -35,6 +35,17 @@
         ];
       }
       {
+        profile.name = "undocked_leaf";
+        profile.outputs = [
+          {
+            criteria = "BOE *";
+            scale = 1.5;
+            mode = "2880x1920@120.00Hz";
+            status = "enable";
+          }
+        ];
+      }
+      {
         profile.name = "undocked";
         profile.outputs = [
           {
