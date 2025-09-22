@@ -21,22 +21,16 @@
 
       # Dev
       vscode
-      flyctl
       inotify-tools
       wxGTK32
       ncurses
       m4
-      python311
-      python311Packages.pip
-      mosquitto
       cmake
       gnumake
       beamMinimal28Packages.erlang
       beamMinimal28Packages.elixir_1_18
       beamMinimal28Packages.elixir-ls
-      vscode-langservers-extracted
       ghostscript
-      devbox
       poppler_utils
       tesseract
       hoppscotch

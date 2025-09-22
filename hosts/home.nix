@@ -94,6 +94,4 @@
   programs = {
     home-manager.enable = true;
   };
-
-  services.fwupd.enable = true;
 }

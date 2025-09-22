@@ -1,7 +1,6 @@
 { user, ... }:
 
 {
-
   services = {
     flameshot = {
       enable = true;

@@ -98,7 +98,6 @@
         gcc
         autorandr
         fprintd
-        fwup
       ];
   };
 
@@ -117,6 +116,7 @@
     udisks2.enable = true;
 
     udev.enable = true;
+    fwupd.enable = true;
 
     # Printer
     printing.browsing = true;
