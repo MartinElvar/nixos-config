@@ -6,6 +6,7 @@
   nix-colors,
   user,
   location,
+  nixos-hardware,
   ...
 }:
 
@@ -32,6 +33,8 @@ in
     modules = [
       ./thinkpad
       ./configuration.nix
+
+      nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1
 
       home-manager.nixosModules.home-manager
       {
@@ -62,6 +65,8 @@ in
     modules = [
       ./framework
       ./configuration.nix
+
+      nixos-hardware.nixosModules.framework-amd-ai-300-series
 
       home-manager.nixosModules.home-manager
       {

@@ -6,6 +6,7 @@
 {
   imports = [
     (import ./hardware-configuration.nix)
+    ../../modules/services/fprintd.nix
   ]
   ++ [ (import ../../modules/desktop/hyprland/default.nix) ]
   ++ [ (import ../../modules/desktop/virtualisation/docker.nix) ];

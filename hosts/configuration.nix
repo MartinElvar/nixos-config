@@ -98,6 +98,7 @@
         gcc
         autorandr
         fprintd
+        fwup
       ];
   };
 
@@ -116,7 +117,6 @@
     udisks2.enable = true;
 
     udev.enable = true;
-    udev.extraRules = ''ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.autorandr}/bin/autorandr -c"'';
 
     # Printer
     printing.browsing = true;

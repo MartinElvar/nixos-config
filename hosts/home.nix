@@ -72,6 +72,7 @@
       zoxide # Better cd
       fd # Better find
       lm_sensors
+      kdePackages.spectacle # screenshots
 
       # Xorg
       # xclip
@@ -82,8 +83,6 @@
       # xterm
       #
       flameshot
-
-      caffeine-ng
 
       # Desktop
       ffmpeg
@@ -96,7 +95,5 @@
     home-manager.enable = true;
   };
 
-  services = {
-    caffeine.enable = true;
-  };
+  services.fwupd.enable = true;
 }

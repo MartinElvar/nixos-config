@@ -20,6 +20,8 @@
       url = "path:./lazyvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nioxos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs =
@@ -28,6 +30,7 @@
       nix-ld,
       nix-colors,
       nixpkgs,
+      nixos-hardware,
       home-manager,
       ...
     }:
@@ -52,6 +55,7 @@
             user
             location
             nix-ld
+            nixos-hardware
             ;
         }
       );
