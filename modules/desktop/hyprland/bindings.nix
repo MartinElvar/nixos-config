@@ -40,8 +40,8 @@
       "SUPER SHIFT, A, exec, $webapp=https://grok.com"
       "SUPER, C, exec, thinderbird"
       "SUPER, Y, exec, $webapp=https://youtube.com/"
-      "SUPER SHIFT, G, exec, $webapp=https://web.whatsapp.com/"
       "SUPER, X, exec, $webapp=https://x.com/"
+      "SUPER SHIFT, G, exec, $webapp=https://web.whatsapp.com/"
 
       "SUPER, return, exec, $terminal"
       "SUPER, F, exec, $fileManager"

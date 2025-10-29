@@ -43,6 +43,9 @@ require("nixCatsUtils.lazyCat").setup(nixCats.pawsible({ "allPlugins", "start", 
 			-- nix already ensured they were installed, and we would need to change the parser_install_dir if we wanted to use it instead.
 			-- so we just disable install and do it via nix.
 			ensure_installed = require("nixCatsUtils").lazyAdd({
+				"elixir",
+				"eex",
+				"heex",
 				"bash",
 				"c",
 				"diff",
@@ -53,7 +56,14 @@ require("nixCatsUtils.lazyCat").setup(nixCats.pawsible({ "allPlugins", "start", 
 				"vim",
 				"vimdoc",
 			}, false),
-			auto_install = require("nixCatsUtils").lazyAdd(true, false),
+			highlight = {
+				enable = true,
+				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+				--  If you are experiencing weird indenting issues, add the language to
+				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
+				additional_vim_regex_highlighting = false,
+			},
+			indent = { enable = true, disable = { "ruby" } },
 		},
 	},
 	{

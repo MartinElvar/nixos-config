@@ -91,5 +91,9 @@
     # trezor-udev-rules
     # potentially even more if you need them
     # ];
+
+    tailscale = {
+      enable = true;
+    };
   };
 }

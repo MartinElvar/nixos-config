@@ -4,12 +4,13 @@
   programs = {
     zsh = {
       enable = true;
-      autosuggestions.enable = true;            # Auto suggest options and highlights syntax, searches in history for options
+      autosuggestions.enable = true; # Auto suggest options and highlights syntax, searches in history for options
       syntaxHighlighting.enable = true;
       enableCompletion = true;
       histSize = 100000;
 
-      ohMyZsh = {                               # Extra plugins for zsh
+      ohMyZsh = {
+        # Extra plugins for zsh
         enable = true;
         plugins = [ "git" ];
       };
@@ -20,13 +21,12 @@
         autoload -U promptinit; promptinit
 
         # Swag
-        pfetch                                  # Show fetch logo on terminal start
+        pfetch
       '';
 
-      shellInit = ''                            # Zsh theme
-        # Hook direnv
-#       emulate zsh -c "$(direnv hook zsh)"
-        # export PATH=~/.npm-packages/bin:$PATH
+      shellInit = ''
+        # emulate zsh -c "$(direnv hook zsh)"
+        source <(fzf --zsh)
       '';
     };
   };
