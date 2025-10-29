@@ -42,6 +42,7 @@ require("nixCatsUtils.lazyCat").setup(nixCats.pawsible({ "allPlugins", "start", 
 		opts = {
 			-- nix already ensured they were installed, and we would need to change the parser_install_dir if we wanted to use it instead.
 			-- so we just disable install and do it via nix.
+
 			ensure_installed = require("nixCatsUtils").lazyAdd({
 				"elixir",
 				"eex",
@@ -56,6 +57,9 @@ require("nixCatsUtils.lazyCat").setup(nixCats.pawsible({ "allPlugins", "start", 
 				"vim",
 				"vimdoc",
 			}, false),
+
+			auto_install = require("nixCatsUtils").lazyAdd(true, false),
+
 			highlight = {
 				enable = true,
 				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
@@ -63,8 +67,26 @@ require("nixCatsUtils.lazyCat").setup(nixCats.pawsible({ "allPlugins", "start", 
 				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
 				additional_vim_regex_highlighting = false,
 			},
+
+			incremental_selection = { enable = true },
+
 			indent = { enable = true, disable = { "ruby" } },
 		},
+		config = function(_, opts)
+			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+
+			-- Prefer git instead of curl in order to improve connectivity in some environments
+			require("nvim-treesitter.install").prefer_git = true
+			---@diagnostic disable-next-line: missing-fields
+			require("nvim-treesitter.configs").setup(opts)
+
+			-- There are additional nvim-treesitter modules that you can use to interact
+			-- with nvim-treesitter. You should go explore a few and see what interests you:
+			--
+			--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
+			--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
+			--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+		end,
 	},
 	{
 		"folke/lazydev.nvim",
@@ -79,9 +101,7 @@ require("nixCatsUtils.lazyCat").setup(nixCats.pawsible({ "allPlugins", "start", 
 	{ import = "plugins" },
 }, lazyOptions)
 
-local lspconfig = require("lspconfig")
-
-lspconfig.elixirls.setup({
+vim.lsp.config["elixirls"] = {
 	cmd = { "elixir-ls" },
-	root_dir = lspconfig.util.root_pattern("mix.exs", ".git"),
-})
+	root_markers = { "mix.exs", ".git" },
+}
