@@ -30,10 +30,10 @@
       beamMinimal28Packages.erlang
       beamMinimal28Packages.elixir_1_18
       beamMinimal28Packages.elixir-ls
-      ghostscript
-      poppler_utils
+      # ghostscript
+      poppler-utils
       tesseract
-      hoppscotch
+      # hoppscotch
     ];
   };
 

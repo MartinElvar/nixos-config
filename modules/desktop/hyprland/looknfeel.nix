@@ -36,7 +36,7 @@ in
       };
 
       blur = {
-        enabled = true;
+        enabled = false;
         size = 5;
         passes = 2;
         vibrancy = 0.1696;

@@ -45,13 +45,12 @@
     gyre-fonts # TrueType substitutes for standard PostScript fonts
     liberation_ttf
     unifont
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     source-code-pro
     jetbrains-mono
     font-awesome # Icons
     corefonts # MS
     nerd-fonts.fira-code
-    noto-fonts-emoji
     noto-fonts-cjk-sans
     symbola
     material-icons
@@ -59,11 +58,6 @@
 
   # Blox uses deprecated PEAP, downgrade openssl with this patch.
   nixpkgs.config.allowUnsupportedSystem = true;
-  nixpkgs.config.packageOverrides = pkgs: rec {
-    wpa_supplicant = pkgs.wpa_supplicant.overrideAttrs (attrs: {
-      patches = [ ./bloxhub.patch ];
-    });
-  };
 
   environment = {
     variables = {
@@ -112,7 +106,7 @@
       pulse.enable = true;
       jack.enable = true;
     };
-    flatpak.enable = true;
+
     udisks2.enable = true;
 
     udev.enable = true;

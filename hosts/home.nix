@@ -62,7 +62,6 @@
       rofi
       rofi-power-menu
       udiskie
-      trayer
       kdePackages.kcalc
       networkmanagerapplet
       networkmanager-openvpn

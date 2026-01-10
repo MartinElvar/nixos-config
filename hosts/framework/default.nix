@@ -37,7 +37,7 @@
     hostName = "Mars-nixos";
     networkmanager = {
       enable = true;
-      # plugins = [pkgs.networkmanager-openvpn];
+      #wifi.backend = "iwd";
     };
 
     firewall.enable = true;
@@ -84,6 +84,14 @@
     logind.settings.Login = {
       lidSwitch = "hybrid-sleep";
       lidSwitchDocked = "ignore";
+    };
+
+    # https://github.com/NixOS/nixos-hardware/issues/1603
+    #
+    pipewire.wireplumber.extraConfig.no-ucm = {
+      "monitor.alsa.properties" = {
+        "alsa.use-ucm" = false;
+      };
     };
 
     # udev.packages = with pkgs; [

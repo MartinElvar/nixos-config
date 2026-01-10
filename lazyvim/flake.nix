@@ -5,8 +5,11 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
+    plugins-treesitter-textobjects = {
+      url = "github:nvim-treesitter/nvim-treesitter-textobjects/main";
+      flake = false;
+    };
 
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay";
@@ -108,10 +111,11 @@
               fd
               stdenv.cc.cc
               lua-language-server
-              # beamMinimal28Packages.elixir-ls
+              beamMinimal28Packages.elixir-ls
               nil # Nix LS
               marksman # Markdown LS
-              vscode-langservers-extracted # JSON LS
+              #vscode-langservers-extracted # JSON LS
+              tree-sitter
 
               stylua
             ];
@@ -137,7 +141,6 @@
               nui-nvim
               nvim-lint
               nvim-lspconfig
-              nvim-treesitter-textobjects
               nvim-ts-autotag
               ts-comments-nvim
               blink-cmp
@@ -153,7 +156,8 @@
               vim-startuptime
               which-key-nvim
               snacks-nvim
-              nvim-treesitter-textobjects
+
+              pkgs.neovimPlugins.treesitter-textobjects
               nvim-treesitter.withAllGrammars
               # This is for if you only want some of the grammars
               # (nvim-treesitter.withPlugins (

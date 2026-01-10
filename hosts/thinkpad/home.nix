@@ -39,7 +39,7 @@
       vscode-langservers-extracted
       ghostscript
       devbox
-      poppler_utils
+      poppler-utils
       tesseract
       hoppscotch
       rustup

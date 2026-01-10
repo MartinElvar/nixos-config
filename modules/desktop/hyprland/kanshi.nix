@@ -56,6 +56,24 @@
           }
         ];
       }
+      {
+        profile.name = "mirror-hdmi";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "enable";
+            position = "0,0";
+            mode = "1920x1080";
+          }
+          {
+            criteria = "HDMI-A-1";
+            status = "enable";
+            position = "1920,0";
+            mode = "1920x1080";
+          }
+        ];
+        profile.exec = "exec wl-present mirror eDP-1 --fullscreen-output HDMI-A-1 --fullscreen";
+      }
     ];
   };
 }
