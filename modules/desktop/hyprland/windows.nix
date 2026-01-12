@@ -5,40 +5,39 @@
   wayland.windowManager.hyprland.settings = {
     windowrule = [
       # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-      "suppressevent maximize, class:.*"
+      "match:class .*, suppress_event maximize"
 
       # Force chromium into a tile to deal with --app bug
-      "tile, class:^(brave)$"
+      "match:class ^(brave)$, tile 1"
 
       # Settings management
-      "float, class:^(org.pulseaudio.pavucontrol|blueberry.py)$"
+      "match:class ^(org.pulseaudio.pavucontrol|blueberry.py)$, float 1"
 
       # Float Steam, fullscreen RetroArch
-      "float, class:^(steam)$"
+      "match:class ^(steam)$, float 1"
 
       # Just dash of transparency
-      "opacity 0.97 0.9, class:.*"
+      "match:class .*, opacity 0.97 0.9"
       # Normal chrome Youtube tabs
-      "opacity 1 1, class:^(chromium|google-chrome|google-chrome-unstable|brave)$, title:.*Youtube.*"
-      "opacity 1 0.97, class:^(chromium|google-chrome|google-chrome-unstable|brave)$"
-      "opacity 0.97 0.9, initialClass:^(chrome-.*-Default)$ # web apps"
-      "opacity 1 1, initialClass:^(chrome-youtube.*-Default)$ # Youtube"
-      "opacity 1 1, class:^(zoom|vlc|org.kde.kdenlive|com.obsproject.Studio)$"
-      "opacity 1 1, class:^(com.libretro.RetroArch|steam)$"
+      "match:class ^(chromium|google-chrome|google-chrome-unstable|brave)$, match:title .*Youtube.*, opacity 1 1,"
+      "match:class ^(chromium|google-chrome|google-chrome-unstable|brave)$, opacity 1 0.97"
+      "match:initial_class ^(chrome-.*-Default)$, opacity 0.97 0.9 # web apps"
+      "match:initial_class ^(chrome-youtube.*-Default)$, opacity 1 1 # Youtube"
+      "match:class ^(zoom|vlc|org.kde.kdenlive|com.obsproject.Studio)$, opacity 1 1"
 
       # Fix some dragging issues with XWayland
-      "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+      "match:class ^$, match:title ^$, match:xwayland 1, float 1, fullscreen 0, pin 0, no_focus 1"
 
       # Float in the middle for clipse clipboard manager
-      "float, class:(clipse)"
-      "size 622 652, class:(clipse)"
-      "stayfocused, class:(clipse)"
+      "match:class clipse, float 1"
+      "match:class clipse, size 622 652"
+      "match:class clipse, stay_focused 1"
     ];
 
     layerrule = [
       # Proper background blur for wofi
-      "blur,wofi"
-      "blur,waybar"
+      "match:namespace launcher, blur 1"
+      "match:title waybar, blur 1"
     ];
   };
 }

@@ -16,10 +16,6 @@ in
   programs.hyprlock = {
     enable = true;
     settings = {
-      general = {
-        disable_loading_bar = true;
-        no_fade_in = false;
-      };
       auth = {
         fingerprint.enabled = true;
       };
@@ -42,10 +38,10 @@ in
         outline_thickness = 4;
 
         font_family = "CaskaydiaMono Nerd Font";
-        font_size = 32;
+        # font_size = 32;
         font_color = foregroundRgb;
 
-        placeholder_color = foregroundMutedRgb;
+        # placeholder_color = foregroundMutedRgb;
         placeholder_text = "  Enter Password 󰈷 ";
         check_color = "rgba(131, 192, 146, 1.0)";
         fail_text = "Wrong";

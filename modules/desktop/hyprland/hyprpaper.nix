@@ -12,7 +12,10 @@ in
         wallpaper
       ];
       wallpaper = [
-        ", ${wallpaper}"
+        {
+          monitor = "";
+          path = wallpaper;
+        }
       ];
     };
   };
