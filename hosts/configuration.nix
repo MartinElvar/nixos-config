@@ -113,7 +113,15 @@
     fwupd.enable = true;
 
     # Printer
+    printing.enable = true;
     printing.browsing = true;
+
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+
     printing.browsedConf = ''
       BrowseDNSSDSubTypes _cups,_print
       BrowseLocalProtocols all

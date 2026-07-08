@@ -25,6 +25,7 @@
   colorScheme = nix-colors.colorSchemes.catppuccin-mocha;
 
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
+  wayland.windowManager.hyprland.configType = "hyprlang";
 
   wayland.windowManager.hyprland.settings = {
     # Default applications
@@ -37,7 +38,7 @@
 
     monitor = [
       # Always set up the laptop panel
-      "eDP-1, preferred, 0x0, 1"
+      # "eDP-1, preferred, 0x0, 1"
       # Fallback for *any* other monitor you plug in (extend, auto place/size)
       ", preferred, auto, 1"
     ];

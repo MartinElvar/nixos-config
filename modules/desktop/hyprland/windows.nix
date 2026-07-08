@@ -16,6 +16,12 @@
       # Float Steam, fullscreen RetroArch
       "match:class ^(steam)$, float 1"
 
+      # Float file pickers: the portal one (xdg-desktop-portal-gtk) and
+      # in-browser GTK dialogs (must come after the brave tile rule to win)
+      "match:class ^(xdg-desktop-portal-gtk)$, float 1, center 1"
+      "match:class ^(xdg-desktop-portal-gtk)$, size 60% 65%"
+      "match:class ^(chromium|google-chrome|google-chrome-unstable|brave)$, match:title ^(Open File|Open Files|Save File|Save File As|File Upload|Select).*, float 1, center 1"
+
       # Just dash of transparency
       "match:class .*, opacity 0.97 0.9"
       # Normal chrome Youtube tabs

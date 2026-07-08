@@ -25,17 +25,18 @@
       flyctl
       inotify-tools
       postgresql
-      wxGTK32
+      wxwidgets_3_2
       ncurses
       m4
-      python311
-      python311Packages.pip
+      # python311
+      # python311Packages.pip
       mosquitto
       cmake
       gnumake
-      beamMinimal28Packages.erlang
-      beamMinimal28Packages.elixir_1_18
-      beamMinimal28Packages.elixir-ls
+      claude-code
+      beamMinimal29Packages.erlang
+      beamMinimal29Packages.elixir_1_20
+      beamMinimal29Packages.elixir-ls
       vscode-langservers-extracted
       ghostscript
       devbox

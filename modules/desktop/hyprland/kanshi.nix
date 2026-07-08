@@ -21,12 +21,12 @@
         ];
       }
       {
-        profile.name = "leaf";
+        profile.name = "work";
         profile.outputs = [
           {
-            criteria = "Microstep *";
+            criteria = "Iiyama *";
             position = "0,0";
-            mode = "3440x1440@60.00Hz";
+            mode = "3440x1440@59.97Hz";
           }
           {
             criteria = "eDP-1";
@@ -34,17 +34,17 @@
           }
         ];
       }
-      {
-        profile.name = "undocked_leaf";
-        profile.outputs = [
-          {
-            criteria = "BOE *";
-            scale = 1.5;
-            mode = "2880x1920@120.00Hz";
-            status = "enable";
-          }
-        ];
-      }
+      # {
+      #   profile.name = "undocked_leaf";
+      #   profile.outputs = [
+      #     {
+      #       criteria = "BOE *";
+      #       scale = 1.5;
+      #       mode = "2880x1920@120.00Hz";
+      #       status = "enable";
+      #     }
+      #   ];
+      # }
       {
         profile.name = "undocked";
         profile.outputs = [

@@ -64,6 +64,11 @@
       # Color picker
       "SUPER, PRINT, exec, hyprpicker -a"
 
+      # Monitors: toggle mirroring, arrange ad-hoc layouts
+      "SUPER, P, exec, hypr-mirror"
+      ", XF86Display, exec, hypr-mirror"
+      "SUPER SHIFT, P, exec, nwg-displays"
+
       # Clipse
       "CTRL ALT, V, exec, alacritty --class clipse -e clipse"
     ]
