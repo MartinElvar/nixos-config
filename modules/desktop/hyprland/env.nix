@@ -33,7 +33,7 @@
 
       # Use XCompose file
       "XCOMPOSEFILE,~/.XCompose"
-      "EDITOR,nvim"
+      "EDITOR,hx"
 
       # GTK theme
       "GTK_THEME,Adwaita:dark"

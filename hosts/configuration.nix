@@ -62,19 +62,14 @@
   environment = {
     variables = {
       TERMINAL = "alacritty";
-      EDITOR = "nvim";
-      VISUAL = "nvim";
+      EDITOR = "hx";
+      VISUAL = "hx";
     };
     systemPackages =
       with pkgs;
-      let
-        my-nvim = inputs.nvim.packages.${system}.default;
-      in
       [
         # Default packages install system-wide
         nix-index
-        vim
-        my-nvim
         emacs
         ripgrep
         coreutils

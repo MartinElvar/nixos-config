@@ -47,7 +47,7 @@
       "SUPER, F, exec, $fileManager"
       "SUPER, B, exec, $browser"
       "SUPER, M, exec, $music"
-      "SUPER, N, exec, $terminal -e nvim"
+      "SUPER, N, exec, $terminal -e hx"
       "SUPER, T, exec, $terminal -e btop"
       "SUPER, G, exec, $messenger"
       "SUPER, O, exec, obsidian -disable-gpu"
