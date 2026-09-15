@@ -3,7 +3,9 @@
 {
   services.kanshi = {
     enable = true;
-    systemdTarget = "hyprland-session.target";
+    # hyprland-session.target is gone (hyprland.systemd.enable = false);
+    # uwsm reaches graphical-session.target instead
+    systemdTarget = "graphical-session.target";
 
     settings = [
       {
@@ -25,6 +27,20 @@
         profile.outputs = [
           {
             criteria = "Iiyama *";
+            position = "0,0";
+            mode = "3440x1440@59.97Hz";
+          }
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+        ];
+      }
+      {
+        profile.name = "work_dell";
+        profile.outputs = [
+          {
+            criteria = "Dell *";
             position = "0,0";
             mode = "3440x1440@59.97Hz";
           }

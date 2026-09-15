@@ -15,6 +15,11 @@
 
 
       languages = {
+        language-server.expert = {
+          command = "expert";
+          args = ["--stdio"];
+        };
+
         language-server.solargraph.config = {
           diagnostics = true;
           formatting = true; 
@@ -44,7 +49,7 @@
             diagnostic-severity = "hint";
             comment-token = "#";
             indent = {tab-width = 2; unit = " ";};
-            language-servers = ["elixir-ls"];
+            language-servers = ["expert"];
           }
           {
             name = "ruby";

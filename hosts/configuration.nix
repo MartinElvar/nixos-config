@@ -47,7 +47,7 @@
     unifont
     noto-fonts-color-emoji
     source-code-pro
-    jetbrains-mono
+    # jetbrains-mono # TEMP: broken upstream (nanoemoji FOD hash mismatch @ nixpkgs 0e251e2); restore when fixed
     font-awesome # Icons
     corefonts # MS
     nerd-fonts.fira-code

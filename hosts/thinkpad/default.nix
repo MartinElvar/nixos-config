@@ -14,7 +14,6 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
 
     initrd.kernelModules = [ "amdgpu" ];
 
@@ -33,6 +32,9 @@
   # device = "/swapfile";
   # size = 32 * 1024; # 16GB
   # }];
+
+  # Compressed in-RAM swap, used before the disk swap partition
+  zramSwap.enable = true;
 
   networking = {
     hostName = "Saturn-nixos";
@@ -82,6 +84,13 @@
 
   services = {
     blueman.enable = true;
+
+    # TLP is enabled by nixos-hardware's t14-amd-gen1 module;
+    # cap charging to extend battery lifespan
+    tlp.settings = {
+      START_CHARGE_THRESH_BAT0 = 85;
+      STOP_CHARGE_THRESH_BAT0 = 90;
+    };
     logind.settings.Login = {
       lidSwitch = "hybrid-sleep";
       lidSwitchDocked = "ignore";
@@ -94,10 +103,8 @@
       # extraPlugins = with pkgs.postgresql_15.pkgs; [ postgis ];
       extensions = with pkgs.postgresql_15.pkgs; [
         postgis
-        timescaledb
         pgvector
       ];
-      settings.shared_preload_libraries = "timescaledb";
       authentication = pkgs.lib.mkOverride 10 ''
         local all all trust
         host all all 127.0.0.1/32 trust

@@ -27,7 +27,16 @@
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
   wayland.windowManager.hyprland.configType = "hyprlang";
 
+  # uwsm owns the session targets (programs.hyprland.withUWSM). home-manager's
+  # hyprland-session.target now sets PropagatesStopTo=graphical-session.target,
+  # so its startup `systemctl --user stop hyprland-session.target` tears down
+  # graphical-session.target and kills the compositor a second after login.
+  wayland.windowManager.hyprland.systemd.enable = false;
+
   wayland.windowManager.hyprland.settings = {
+    # nwg-displays writes monitor layout here; Hyprland auto-reloads it on change
+    source = [ "~/.config/hypr/monitors.conf" ];
+
     # Default applications
     "$terminal" = "alacritty";
     "$fileManager" = "nautilus --new-window";
@@ -55,8 +64,8 @@
     enable = true;
 
     theme = {
-      package = pkgs.flat-remix-gtk;
-      name = "Flat-Remix-GTK-Grey-Darkest";
+      package = pkgs.adw-gtk3;
+      name = "adw-gtk3-dark";
     };
 
     iconTheme = {
