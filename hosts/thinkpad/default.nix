@@ -10,6 +10,7 @@
   ]
   # ++ [ (import ../../modules/desktop/xmonad/default.nix) ]
   ++ [ (import ../../modules/desktop/hyprland/default.nix) ]
+  ++ [ (import ../../modules/desktop/plasma.nix) ]
   ++ [ (import ../../modules/desktop/virtualisation/docker.nix) ];
 
   boot = {

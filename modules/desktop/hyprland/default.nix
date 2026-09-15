@@ -49,7 +49,15 @@
   # Initial login experience
   services.greetd = {
     enable = true;
-    settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'uwsm start hyprland-uwsm.desktop'";
+    settings.default_session.command = builtins.concatStringsSep " " [
+      "${pkgs.tuigreet}/bin/tuigreet"
+      "--time"
+      "--cmd 'uwsm start hyprland-uwsm.desktop'"
+      # Backup DE: press F3 at the login screen to pick another session
+      # (e.g. Plasma) if Hyprland is broken. Once picked, it's remembered.
+      "--sessions /run/current-system/sw/share/wayland-sessions:/run/current-system/sw/share/xsessions"
+      "--remember-session"
+    ];
     settings.default_session.user = "saturn";
   };
 
