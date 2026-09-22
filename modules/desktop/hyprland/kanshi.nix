@@ -26,7 +26,7 @@
         profile.name = "work";
         profile.outputs = [
           {
-            criteria = "Iiyama *";
+            criteria = "iiyama *";
             position = "0,0";
             mode = "3440x1440@59.97Hz";
           }
@@ -72,24 +72,12 @@
           }
         ];
       }
-      {
-        profile.name = "mirror-hdmi";
-        profile.outputs = [
-          {
-            criteria = "eDP-1";
-            status = "enable";
-            position = "0,0";
-            mode = "1920x1080";
-          }
-          {
-            criteria = "HDMI-A-1";
-            status = "enable";
-            position = "1920,0";
-            mode = "1920x1080";
-          }
-        ];
-        profile.exec = "exec wl-present mirror eDP-1 --fullscreen-output HDMI-A-1 --fullscreen";
-      }
+      # Mirroring is handled manually via `hypr-mirror` (SUPER+P / XF86Display),
+      # see modules/desktop/hyprland/scripts/toggle_mirror.sh. A "mirror-hdmi"
+      # kanshi profile used to live here, but since it literally matched
+      # "HDMI-A-1" it would race the "work" profile above on every HDMI
+      # hotplug (Iiyama's EDID isn't always populated yet when the head first
+      # appears), sometimes winning and mirroring instead of extending.
     ];
   };
 }

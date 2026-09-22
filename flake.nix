@@ -17,6 +17,8 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    yazelix.url = "github:Yazelix/nova/stable";
   };
 
   outputs =

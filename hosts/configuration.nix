@@ -132,6 +132,14 @@
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
+      # Default TTLs (30min idle / 2h max) make it re-prompt for the SSH key
+      # passphrase constantly. Cache it for effectively the whole login session.
+      settings = {
+        default-cache-ttl = 34560000;
+        max-cache-ttl = 34560000;
+        default-cache-ttl-ssh = 34560000;
+        max-cache-ttl-ssh = 34560000;
+      };
     };
   };
 
@@ -142,6 +150,10 @@
       trusted-users = [
         "root"
         "saturn"
+      ];
+      extra-substituters = [ "https://yazelix.cachix.org" ];
+      extra-trusted-public-keys = [
+        "yazelix.cachix.org-1:ZgxIjQvaP0VTWL8Racx27mpUNzDJ97xC2y7QWYjmGNM="
       ];
     };
     # gc = {

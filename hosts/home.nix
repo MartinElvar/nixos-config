@@ -1,12 +1,18 @@
 {
   pkgs,
   user,
+  inputs,
   ...
 }:
 
 {
   imports =
-    (import ../modules/editors) ++ (import ../modules/programs) ++ (import ../modules/services);
+    (import ../modules/editors)
+    ++ (import ../modules/programs)
+    ++ (import ../modules/services)
+    ++ [ inputs.yazelix.homeManagerModules.default ];
+
+  programs.yazelix.enable = true;
 
   home = {
     # username = "${user}";
