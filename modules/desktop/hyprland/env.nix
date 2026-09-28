@@ -6,46 +6,58 @@
   wayland.windowManager.hyprland.settings = {
     # Environment variables
     env = [
-      "GDK_SCALE,1"
+      { _args = [ "GDK_SCALE" "1" ]; }
 
       # Cursor size
-      "XCURSOR_SIZE,24"
-      "HYPRCURSOR_SIZE,24"
+      { _args = [ "XCURSOR_SIZE" "24" ]; }
+      { _args = [ "HYPRCURSOR_SIZE" "24" ]; }
 
       # Cursor theme
-      "XCURSOR_THEME,Adwaita"
-      "HYPRCURSOR_THEME,Adwaita"
+      { _args = [ "XCURSOR_THEME" "Adwaita" ]; }
+      { _args = [ "HYPRCURSOR_THEME" "Adwaita" ]; }
 
       # Force all apps to use Wayland
-      "GDK_BACKEND,wayland"
-      "QT_QPA_PLATFORM,wayland"
-      "QT_STYLE_OVERRIDE,kvantum"
-      "SDL_VIDEODRIVER,wayland"
-      "MOZ_ENABLE_WAYLAND,1"
-      "ELECTRON_OZONE_PLATFORM_HINT,wayland"
-      "OZONE_PLATFORM,wayland"
+      { _args = [ "GDK_BACKEND" "wayland" ]; }
+      { _args = [ "QT_QPA_PLATFORM" "wayland" ]; }
+      { _args = [ "QT_STYLE_OVERRIDE" "kvantum" ]; }
+      { _args = [ "SDL_VIDEODRIVER" "wayland" ]; }
+      { _args = [ "MOZ_ENABLE_WAYLAND" "1" ]; }
+      { _args = [ "ELECTRON_OZONE_PLATFORM_HINT" "wayland" ]; }
+      { _args = [ "OZONE_PLATFORM" "wayland" ]; }
 
       # Make Chromium use XCompose and all Wayland
-      "CHROMIUM_FLAGS,\"--enable-features=UseOzonePlatform --ozone-platform=wayland --gtk-version=4\""
+      {
+        _args = [
+          "CHROMIUM_FLAGS"
+          ''"--enable-features=UseOzonePlatform --ozone-platform=wayland --gtk-version=4"''
+        ];
+      }
 
       # Make .desktop files available for wofi
-      "XDG_DATA_DIRS,$XDG_DATA_DIRS:$HOME/.nix-profile/share:/nix/var/nix/profiles/default/share"
+      {
+        _args = [
+          "XDG_DATA_DIRS"
+          "$XDG_DATA_DIRS:$HOME/.nix-profile/share:/nix/var/nix/profiles/default/share"
+        ];
+      }
 
       # Use XCompose file
-      "XCOMPOSEFILE,~/.XCompose"
-      "EDITOR,hx"
+      { _args = [ "XCOMPOSEFILE" "~/.XCompose" ]; }
+      { _args = [ "EDITOR" "hx" ]; }
 
       # GTK theme
-      "GTK_THEME,Adwaita:dark"
+      { _args = [ "GTK_THEME" "Adwaita:dark" ]; }
     ];
 
-    xwayland = {
-      force_zero_scaling = true;
-    };
+    config = {
+      xwayland = {
+        force_zero_scaling = true;
+      };
 
-    # Don't show update on first launch
-    ecosystem = {
-      no_update_news = true;
+      # Don't show update on first launch
+      ecosystem = {
+        no_update_news = true;
+      };
     };
   };
 }

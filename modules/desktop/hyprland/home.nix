@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   nix-colors,
   ...
 }:
@@ -25,7 +26,7 @@
   colorScheme = nix-colors.colorSchemes.catppuccin-mocha;
 
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
-  wayland.windowManager.hyprland.configType = "hyprlang";
+  wayland.windowManager.hyprland.configType = "lua";
 
   # uwsm owns the session targets (programs.hyprland.withUWSM). home-manager's
   # hyprland-session.target now sets PropagatesStopTo=graphical-session.target,
@@ -33,24 +34,30 @@
   # graphical-session.target and kills the compositor a second after login.
   wayland.windowManager.hyprland.systemd.enable = false;
 
+  # nwg-displays (>=0.55-aware) writes ~/.config/hypr/monitors.lua and expects
+  # the main config to `require("monitors")`; Hyprland auto-reloads on change.
+  wayland.windowManager.hyprland.extraConfig = ''
+    require("monitors")
+  '';
+
   wayland.windowManager.hyprland.settings = {
-    # nwg-displays writes monitor layout here; Hyprland auto-reloads it on change
-    source = [ "~/.config/hypr/monitors.conf" ];
-
     # Default applications
-    "$terminal" = "alacritty";
-    "$fileManager" = "nautilus --new-window";
-    "$browser" = "brave --new-window --ozone-platform=wayland";
-    "$music" = "spotify";
-    "$messenger" = "signal-desktop";
-    "$webapp" = "$browser --app";
+    terminal._var = "alacritty";
+    fileManager._var = "nautilus --new-window";
+    browser._var = "brave --new-window --ozone-platform=wayland";
+    music._var = "spotify";
+    messenger._var = "signal-desktop";
+    webapp._var = lib.generators.mkLuaInline ''browser .. " --app"'';
 
-    monitor = [
+    monitor = {
       # Always set up the laptop panel
-      # "eDP-1, preferred, 0x0, 1"
+      # output = "eDP-1"; mode = "preferred"; position = "0x0"; scale = 1;
       # Fallback for *any* other monitor you plug in (extend, auto place/size)
-      ", preferred, auto, 1"
-    ];
+      output = "";
+      mode = "preferred";
+      position = "auto";
+      scale = 1;
+    };
   };
 
   home.pointerCursor = {

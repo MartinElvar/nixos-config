@@ -3,9 +3,8 @@
 }:
 {
   wayland.windowManager.hyprland.settings = {
-    # Environment variables
-    # https://wiki.hyprland.org/Configuring/Variables/#input
-    input = {
+    # https://wiki.hypr.land/Configuring/Variables/#input
+    config.input = {
       kb_layout = "us";
       kb_variant = "mac";
       # kb_model =
@@ -21,8 +20,8 @@
       };
     };
 
-    # https://wiki.hyprland.org/Configuring/Variables/#gestures
-    # gestures = {
+    # https://wiki.hypr.land/Configuring/Variables/#gestures
+    # config.gestures = {
     # };
   };
 }

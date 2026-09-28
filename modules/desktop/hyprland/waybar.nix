@@ -1,15 +1,30 @@
 {
   config,
+  pkgs,
+  lib,
   nix-colors,
   ...
 }:
 let
+  caffeinePkg = pkgs.writeShellApplication {
+    name = "caffeine";
+    runtimeInputs = with pkgs; [
+      coreutils
+      procps
+      systemd
+      wofi
+    ];
+    text = builtins.readFile ./config/caffeine.sh;
+  };
+  caffeine = lib.getExe caffeinePkg;
   palette = config.colorScheme.palette;
   convert = nix-colors.lib.conversions.hexToRGBString;
   backgroundRgb = "rgb(${convert ", " palette.base00})";
   foregroundRgb = "rgb(${convert ", " palette.base05})";
 in
 {
+  home.packages = [ caffeinePkg ];
+
   home.file = {
     ".config/waybar/" = {
       source = ./config/waybar;
@@ -46,6 +61,7 @@ in
         ];
         modules-right = [
           "tray"
+          "custom/caffeine"
           "bluetooth"
           "network"
           "wireplumber"
@@ -189,6 +205,19 @@ in
         };
         tray = {
           spacing = 13;
+        };
+        "custom/caffeine" = {
+          exec = "${caffeine} status";
+          return-type = "json";
+          format = "{icon}";
+          format-icons = {
+            active = "󰅶";
+            inactive = "󰛊";
+          };
+          interval = 30;
+          signal = 8;
+          on-click = "${caffeine} toggle";
+          on-click-right = "${caffeine} menu";
         };
         temperature = {
           thermal-zone = 1;

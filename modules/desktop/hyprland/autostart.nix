@@ -1,18 +1,22 @@
 {
+  lib,
   ...
 }:
 {
   wayland.windowManager.hyprland.settings = {
-    exec-once = [
-      # "hypridle & mako & waybar & fcitx5"
-      "waybar"
-
-      "systemctl --user start hyprpolkitagent"
-      "wl-clip-persist --clipboard regular & clipse -listen"
-    ];
-    #
-    # exec = [
-    #   "pkill -SIGUSR2 waybar || waybar"
-    # ];
+    # exec-once equivalent: run these only when Hyprland actually starts, not
+    # on every `hyprctl reload` (a bare top-level hl.exec_cmd would re-run then).
+    on = {
+      _args = [
+        "hyprland.start"
+        (lib.generators.mkLuaInline ''
+          function()
+            hl.exec_cmd("waybar")
+            hl.exec_cmd("systemctl --user start hyprpolkitagent")
+            hl.exec_cmd("wl-clip-persist --clipboard regular & clipse -listen")
+          end
+        '')
+      ];
+    };
   };
 }
